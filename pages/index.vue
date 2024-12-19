@@ -73,6 +73,7 @@ body {
 
 .section {
   max-width: 1400px;
+  padding: 0;
   margin: 75px auto;
   position: relative;
 }
