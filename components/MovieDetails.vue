@@ -9,7 +9,9 @@
             {{ reviews }} reviews<span v-if="reviews.length >= 2">s</span>
           </div>
           <div class="date">{{ date }}</div>
-          <div class="runtime">{{ formatDuration(runtime) }} mins</div>
+          <div class="runtime">
+            {{ formatDuration(runtime) }}
+          </div>
         </div>
         <p class="overview">{{ overview }}</p>
         <button @click="openTrailer" class="btn-trailer">
@@ -47,7 +49,7 @@
             <div class="date">Released</div>
             <div class="data-date">{{ date }}</div>
             <div class="runtime">Runtime</div>
-            <div class="data-runtime">{{ runtime }} mins</div>
+            <div class="data-runtime">{{ formatDuration(runtime) }}</div>
             <div class="genres">Genre</div>
             <div class="data-genres">
               <div
@@ -188,7 +190,7 @@ function formatDuration(minutes) {
 }
 
 .column-id .right {
-  width: 100%;
+  width: 75%;
   padding-left: 30px;
   margin: auto 0;
   position: relative;
@@ -196,14 +198,15 @@ function formatDuration(minutes) {
 
 .column-details {
   display: grid;
-  grid-template-columns: repeat(4, max-content);
+  grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(4, max-content);
   grid-column-gap: 30px;
   grid-row-gap: 15px;
 }
 
 .film-overview {
-  margin-bottom: 15px;
+  width: 100%;
+  margin-bottom: 25px;
 }
 
 .storyline {
@@ -228,7 +231,7 @@ function formatDuration(minutes) {
 }
 
 .overview {
-  font-size: 0.9 8rem;
+  font-size: 0.98rem;
   color: #fff;
 }
 
@@ -277,6 +280,10 @@ function formatDuration(minutes) {
 .data-productions {
   grid-column: 4 / 4;
   grid-row: 2 / 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
 }
 
 .film-title {
@@ -286,14 +293,6 @@ function formatDuration(minutes) {
 
 .data-genres {
   max-width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 5px;
-}
-
-.data-productions {
-  max-width: 75%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

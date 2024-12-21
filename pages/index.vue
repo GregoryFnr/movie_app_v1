@@ -11,31 +11,25 @@
     </div>
   </section>
   <section class="section">
-    <div class="card-section">
-      <div v-for="movie in movies.results" :key="movie.id">
-        <MovieCard
-          :movieid="movie.id"
-          :title="movie.title"
-          :date="movie.release_date"
-          :poster="movie.poster_path"
-        />
+    <div class="container-card-section">
+      <div class="more">
+        <a href="#" class="more-link">More films</a>
       </div>
-    </div>
-    <div class="container-btn-page">
-      <button v-if="disabledPrevious" @click="page--" class="btn-page">
-        Précedent
-      </button>
-      <div class="btn-page"></div>
-      <button v-if="!disabledNext" @click="page++" class="btn-page">
-        Suivant
-      </button>
+      <div class="card-section">
+        <div v-for="movie in movies.results" :key="movie.id">
+          <MovieCard
+            :movieid="movie.id"
+            :title="movie.title"
+            :date="movie.release_date"
+            :poster="movie.poster_path"
+          />
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup>
-const page = ref(1);
-
 const { data: movies, error } = await useFetch(`/api/movies/`);
 </script>
 
@@ -126,18 +120,30 @@ body {
 
 /*CARD SECTION*/
 
-.card-section {
-  position: relative;
+.container-card-section {
   background-color: hsla(243, 100%, 93%, 10%);
   padding: 25px;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
   border-radius: 5px;
   margin: 50px auto;
-  overflow: hidden;
+}
+
+.more {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: end;
+}
+
+.more-link {
+  color: #fff;
+}
+
+.card-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  overflow: auto;
 }
 
 .background-blur-color {
@@ -153,22 +159,5 @@ body {
   opacity: 0.6;
   width: 1100px;
   right: calc(50% - 700px);
-}
-
-.container-btn-page {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.btn-page {
-  width: auto;
-  padding: 7px 15px;
-  background-color: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 </style>
