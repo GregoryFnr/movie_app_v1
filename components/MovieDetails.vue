@@ -9,7 +9,7 @@
             {{ reviews }} reviews<span v-if="reviews.length >= 2">s</span>
           </div>
           <div class="date">{{ date }}</div>
-          <div class="runtime">{{ runtime }} mins</div>
+          <div class="runtime">{{ formatDuration(runtime) }} mins</div>
         </div>
         <p class="overview">{{ overview }}</p>
         <button @click="openTrailer" class="btn-trailer">
@@ -101,6 +101,12 @@ defineProps([
   "origins",
   "productions",
 ]);
+
+function formatDuration(minutes) {
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return `${hours}h${remainingMinutes.toString().padStart(2, "0")}`;
+}
 </script>
 
 <style scoped>
