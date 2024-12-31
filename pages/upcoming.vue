@@ -2,7 +2,7 @@
   <section class="section">
     <div class="upcoming-container">
       <h1 class="title-upcoming">Upcoming Movies</h1>
-      <div class="movies-grid" @scroll="handleScroll" ref="movieListContainer">
+      <div class="movies-grid">
         <MovieCard
           v-for="movie in movies"
           :key="movie.id"
@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 
 const movies = ref([]);
 const page = ref(1);
@@ -43,18 +43,21 @@ const fetchMovies = async () => {
 };
 
 const handleScroll = () => {
-  const container = document.querySelector(".movies-grid");
-  const bottom =
-    container.scrollHeight - container.scrollTop <= container.clientHeight;
+  const scrollPosition = window.innerHeight + window.scrollY;
+  const threshold = document.documentElement.offsetHeight - 100;
 
-  if (bottom) {
+  if (scrollPosition >= threshold) {
     fetchMovies();
   }
 };
 
 onMounted(() => {
-  console.log("Fetching movies...");
-  fetchMovies(); // Vérifie que cette fonction est bien appelée
+  fetchMovies(); // Charger la première page au montage
+  window.addEventListener("scroll", handleScroll); // Écouteur global
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll); // Nettoyage
 });
 </script>
 
@@ -71,8 +74,7 @@ onMounted(() => {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
-  max-height: 80vh;
-  overflow-y: none;
+  height: 100%;
 }
 
 .loader {
