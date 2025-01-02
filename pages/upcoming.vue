@@ -52,12 +52,21 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
+<<<<<<< HEAD
   fetchMovies();
   window.addEventListener("scroll", handleScroll);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleScroll);
+=======
+  fetchMovies(); // Charger la première page au montage
+  window.addEventListener("scroll", handleScroll); // Écouteur global
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll); // Nettoyage
+>>>>>>> a760efba15c88f200db473de53dbabdb36526257
 });
 </script>
 

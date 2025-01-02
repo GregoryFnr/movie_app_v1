@@ -16,9 +16,13 @@ logs
 # Misc
 .DS_Store
 .fleet
+<<<<<<< HEAD
 .idea
 
 # Local env files
 .env
 .env.*
 !.env.example
+=======
+.idea
+>>>>>>> a760efba15c88f200db473de53dbabdb36526257

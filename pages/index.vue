@@ -12,11 +12,16 @@
   </section>
   <section class="section">
     <div class="container-card-section">
+<<<<<<< HEAD
       <div class="title-section">
         <h2>Upcoming movies</h2>
       </div>
       <div class="more">
         <NuxtLink to="/upcoming" class="more-link">Discover more</NuxtLink>
+=======
+      <div class="more">
+        <NuxtLink to="/upcoming" class="more-link">More films</NuxtLink>
+>>>>>>> a760efba15c88f200db473de53dbabdb36526257
       </div>
       <div class="card-section">
         <swiper :slides-per-view="5" :modules="[Navigation]" navigation>
@@ -57,7 +62,11 @@ const { data: movies, error } = await useFetch(`/api/movies/`);
 :root {
   --text: #fff;
   --background: #000;
+<<<<<<< HEAD
   --primary: #326ebd;
+=======
+  --primary: #3d5a80;
+>>>>>>> a760efba15c88f200db473de53dbabdb36526257
   --secondary: #dddbff;
   --accent: #ee6c4d;
 }
@@ -145,12 +154,16 @@ body {
 }
 
 .more-link {
+<<<<<<< HEAD
   color: var(--accent);
   transition: all 0.2s ease;
 }
 
 .more-link:hover {
   color: #bd583e;
+=======
+  color: #fff;
+>>>>>>> a760efba15c88f200db473de53dbabdb36526257
 }
 
 .card-section {
@@ -158,10 +171,13 @@ body {
   width: 100%;
 }
 
+<<<<<<< HEAD
 .swiper-horizontal {
   padding: 10px;
 }
 
+=======
+>>>>>>> a760efba15c88f200db473de53dbabdb36526257
 .swiper-slide {
   display: flex;
   justify-content: center;
@@ -173,6 +189,14 @@ body {
   transition: all 0.2s ease;
 }
 
+<<<<<<< HEAD
+=======
+.swiper-button-prev:active,
+.swiper-button-next:active {
+  color: var(--accent);
+}
+
+>>>>>>> a760efba15c88f200db473de53dbabdb36526257
 .background-blur-color {
   position: absolute;
   bottom: 0;
