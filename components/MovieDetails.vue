@@ -14,9 +14,7 @@
           </div>
         </div>
         <p class="overview">{{ overview }}</p>
-        <button @click="openTrailer" class="btn-trailer">
-          <a href="">Watch Trailer</a>
-        </button>
+        <button class="btn-trailer">Watch Trailer</button>
       </div>
       <div class="right">
         <img
@@ -28,6 +26,9 @@
   </section>
   <section class="section-color">
     <div class="section">
+      <div class="info-film">
+        <h2>More Info</h2>
+      </div>
       <div class="column-id">
         <div class="left">
           <img
@@ -114,13 +115,19 @@ function formatDuration(minutes) {
 <style scoped>
 .hero-film {
   width: 100%;
-  height: 820px;
+  height: 100%;
   position: relative;
 }
 
+.section {
+  margin: 25px auto;
+}
+
 .banner-columns {
+  width: 100%;
   position: relative;
   height: 100%;
+  aspect-ratio: 25/9;
   display: flex;
   align-items: center;
 }
@@ -131,14 +138,14 @@ function formatDuration(minutes) {
   height: 100%;
   z-index: 1;
   font-size: 1rem;
-  width: 70%;
+  width: 66%;
   padding: 0 75px;
   background: linear-gradient(to right, #000000, #000000, #000000, transparent);
 }
 
 .banner-columns .left .title {
   font-weight: 600;
-  font-size: 3.5rem;
+  font-size: 2.8rem;
 }
 
 .row {
@@ -160,9 +167,9 @@ function formatDuration(minutes) {
 .banner-columns .right {
   position: absolute;
   top: 0;
+  height: 100%;
   right: 0;
   z-index: -1;
-  height: 100%;
   width: auto;
 }
 
@@ -175,9 +182,20 @@ function formatDuration(minutes) {
 .section-color {
   width: 100%;
   background-color: hsla(243, 100%, 93%, 10%);
-  padding: 65px 0;
+  padding: 20px 0;
   position: relative;
   z-index: 10;
+}
+
+.info-film {
+  margin: 0 auto;
+  width: fit-content;
+  margin-bottom: 50px;
+}
+
+.info-film h2 {
+  font-weight: 500;
+  border-bottom: 1px solid #fff;
 }
 
 .column-id {
@@ -211,7 +229,7 @@ function formatDuration(minutes) {
 
 .storyline {
   font-size: 1.65rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 
@@ -233,6 +251,17 @@ function formatDuration(minutes) {
 .overview {
   font-size: 0.98rem;
   color: #fff;
+  margin-bottom: 20px;
+}
+
+.btn-trailer {
+  font-size: 0.95rem;
+  color: #fff;
+  padding: 10px 55px;
+  border: 1px solid;
+  background-color: inherit;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .column-details .date {
