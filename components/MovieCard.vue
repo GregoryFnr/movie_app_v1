@@ -36,6 +36,7 @@ defineProps(["movieid", "title", "date", "poster"]);
 
 .card:hover {
   border: 1px solid var(--primary);
+  transform: translateY(-3px);
 }
 
 .card-container {
