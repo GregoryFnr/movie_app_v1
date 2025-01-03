@@ -19,7 +19,13 @@
         <NuxtLink to="/upcoming" class="more-link">Discover more</NuxtLink>
       </div>
       <div class="card-section">
-        <swiper :slides-per-view="5" :modules="[Navigation]" navigation>
+        <swiper
+          :slides-per-view="5"
+          :slides-per-group="5"
+          :speed="600"
+          :modules="[Navigation]"
+          navigation
+        >
           <swiper-slide v-for="movie in movies.results" :key="movie.id">
             <MovieCard
               :movieid="movie.id"

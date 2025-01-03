@@ -32,6 +32,21 @@ defineProps(["movieid", "title", "date", "poster"]);
   background-color: inherit;
   border-radius: 10px;
   transition: all 0.2s ease;
+  animation: reveal;
+  animation-timeline: view();
+  animation-range-start: cover 0%;
+  animation-range-end: contain 50%;
+}
+
+@keyframes reveal {
+  from {
+    transform: translateY(50px);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .card:hover {
@@ -43,19 +58,6 @@ defineProps(["movieid", "title", "date", "poster"]);
   width: 100%;
   display: block;
   padding: 10px;
-}
-
-.card-rows {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.top-card {
-  width: 100%;
-  height: 100%;
 }
 
 .poster-film {
