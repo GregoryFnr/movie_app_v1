@@ -40,11 +40,9 @@ defineProps(["movieid", "title", "date", "poster"]);
 
 @keyframes reveal {
   from {
-    transform: translateY(50px);
     opacity: 0.2;
   }
   to {
-    transform: translateY(0);
     opacity: 1;
   }
 }

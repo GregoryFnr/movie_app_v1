@@ -151,12 +151,12 @@ body {
 }
 
 .more-link {
-  color: var(--accent);
+  color: var(--text);
   transition: all 0.2s ease;
 }
 
 .more-link:hover {
-  color: #bd583e;
+  color: var(--accent);
 }
 
 .card-section {

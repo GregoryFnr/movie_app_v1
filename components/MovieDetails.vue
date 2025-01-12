@@ -98,7 +98,6 @@ defineProps([
   "stars",
   "reviews",
   "runtime",
-  "key",
   "backdrop",
   "genres",
   "origins",
@@ -110,6 +109,17 @@ function formatDuration(minutes) {
   const remainingMinutes = minutes % 60;
   return `${hours}h${remainingMinutes.toString().padStart(2, "0")}`;
 }
+
+const trailer = ref([]);
+const movieid = "1100099";
+
+const route = useRoute();
+
+const fetchTrailer = async () => {
+  const { data } = await useFetch(`/api/movies/${route.params.id}/trailer`);
+  trailer.value = data || [];
+  console.log(trailer.value); // Affiche les trailers
+};
 </script>
 
 <style scoped>
