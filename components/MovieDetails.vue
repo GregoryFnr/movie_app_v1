@@ -14,7 +14,10 @@
           </div>
         </div>
         <p class="overview">{{ overview }}</p>
-        <button @click="showTrailer" class="btn-trailer">Watch Trailer</button>
+        <button @click="showTrailer" class="btn-trailer">
+          Watch Trailer
+          <font-awesome-icon class="play-icon" :icon="['far', 'circle-play']" />
+        </button>
         <iframe
           v-if="showTrailer"
           :src="`https://www.youtube.com/embed/${video.key}`"
@@ -98,6 +101,13 @@
 </template>
 
 <script setup>
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(fas, fab, far);
 const props = defineProps([
   "title",
   "date",
@@ -271,13 +281,33 @@ const { data: video } = await useFetch(`/api/movies/trailers`);
 }
 
 .btn-trailer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
   font-size: 0.95rem;
   color: #fff;
-  padding: 10px 55px;
-  border: 1px solid;
+  padding: 12px 55px;
+  /*border: 1px solid;*/
+  border: none;
   background-color: inherit;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-trailer:hover {
+  background-color: #333;
+}
+
+.btn-trailer:hover .play-icon {
+  transform: translateX(5px);
+}
+
+.btn-trailer .play-icon {
+  font-size: 1.2rem;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
 }
 
 .column-details .date {

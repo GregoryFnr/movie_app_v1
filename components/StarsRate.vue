@@ -27,9 +27,13 @@ const style = computed(() => ({
 
 <style scoped>
 .stars {
-  width: 20%;
+  width: 120px;
   height: auto;
   font-size: 0.95rem;
+}
+
+.stars img {
+  filter: invert(100%);
 }
 
 .stars-empty {
