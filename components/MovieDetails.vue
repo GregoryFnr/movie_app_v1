@@ -14,13 +14,13 @@
           </div>
         </div>
         <p class="overview">{{ overview }}</p>
-        <button @click="showTrailer" class="btn-trailer">
+        <button @click="fetchTrailer" class="btn-trailer">
           Watch Trailer
           <font-awesome-icon class="play-icon" :icon="['far', 'circle-play']" />
         </button>
         <iframe
-          v-if="showTrailer"
-          :src="`https://www.youtube.com/embed/${video.key}`"
+          v-if="fetchTrailer"
+          :src="`https://www.youtube.com/embed/${trailerKey}`"
           frameborder="0"
           allow="autoplay; encrypted-media"
           allowfullscreen
@@ -131,10 +131,14 @@ function formatDuration(minutes) {
 const route = useRoute();
 const movieid = route.params.id;
 
-//const trailerKey = ref(null);
-//const showTrailer = ref(false);
+const trailerKey = ref(null);
 
-const { data: video } = await useFetch(`/api/movies/trailers`);
+const fetchTrailer = async () => {
+  const { data } = await useFetch(`/api/movies/${movieid}/trailers`);
+  if (data) {
+    trailerKey.value = data.key;
+  }
+};
 </script>
 
 <style scoped>

@@ -21,7 +21,7 @@
 header {
   width: 100%;
   background-color: transparent;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid hsla(243, 100%, 93%, 0.153);
 }
 
 .navbar {
