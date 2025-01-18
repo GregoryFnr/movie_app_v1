@@ -2,31 +2,37 @@
   <footer>
     <div class="footer-container">
       <div class="footer-contact">
-        <h2>Me contacter</h2>
+        <h2>Follow me on</h2>
         <div class="contact-logo">
           <ul>
             <li>
-              <a href=""></a>
+              <a href="https://github.com/GregoryFnr" target="_blank">
+                <font-awesome-icon :icon="['fab', 'github']" />
+              </a>
             </li>
             <li>
-              <a href=""></a>
-            </li>
-            <li>
-              <a href=""></a>
+              <a href="https://www.linkedin.com/in/gregory-fnr/" target="_blank"
+                ><font-awesome-icon :icon="['fab', 'linkedin']"
+              /></a>
             </li>
           </ul>
         </div>
       </div>
-      <div class="footer-legal">
-        <a href="">Mentions légales</a>
-      </div>
       <div class="copyright">
-        <p>Réalisé par Grégory.</p>
+        <p>Created by Gregory.</p>
       </div>
     </div>
   </footer>
 </template>
 
+<script setup>
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(fas, fab);
+</script>
 <style scoped>
 footer {
   width: 100%;
@@ -69,17 +75,6 @@ footer {
 .contact-logo ul li a {
   color: #fff;
   font-size: 1.88rem;
-}
-
-.footer-legal {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.footer-legal a {
-  color: #fff;
-  font-size: 1.11rem;
 }
 
 .copyright {

@@ -4,7 +4,7 @@
       <div class="left">
         <h1 class="title">{{ title }}</h1>
         <div class="row">
-          <div class="stars">{{ stars }}</div>
+          <StarsRate :value="stars" />
           <div class="reviews">
             {{ reviews }} reviews<span v-if="reviews.length >= 2">s</span>
           </div>
@@ -14,7 +14,15 @@
           </div>
         </div>
         <p class="overview">{{ overview }}</p>
-        <button class="btn-trailer">Watch Trailer</button>
+        <button @click="showTrailer" class="btn-trailer">Watch Trailer</button>
+        <iframe
+          v-if="showTrailer"
+          :src="`https://www.youtube.com/embed/${video.key}`"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          class="trailer-modal"
+        ></iframe>
       </div>
       <div class="right">
         <img
@@ -90,7 +98,7 @@
 </template>
 
 <script setup>
-defineProps([
+const props = defineProps([
   "title",
   "date",
   "poster",
@@ -110,16 +118,13 @@ function formatDuration(minutes) {
   return `${hours}h${remainingMinutes.toString().padStart(2, "0")}`;
 }
 
-const trailer = ref([]);
-const movieid = "1100099";
-
 const route = useRoute();
+const movieid = route.params.id;
 
-const fetchTrailer = async () => {
-  const { data } = await useFetch(`/api/movies/${route.params.id}/trailer`);
-  trailer.value = data || [];
-  console.log(trailer.value); // Affiche les trailers
-};
+//const trailerKey = ref(null);
+//const showTrailer = ref(false);
+
+const { data: video } = await useFetch(`/api/movies/trailers`);
 </script>
 
 <style scoped>
@@ -159,6 +164,7 @@ const fetchTrailer = async () => {
 }
 
 .row {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;

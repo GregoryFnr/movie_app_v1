@@ -20,7 +20,7 @@
 definePageMeta({
   layout: "default",
 });
-// Fetch single movie
+
 const route = useRoute();
 
 const { data: movie, error } = await useFetch(`/api/movies/${route.params.id}`);
