@@ -14,18 +14,10 @@
           </div>
         </div>
         <p class="overview">{{ overview }}</p>
-        <button @click="fetchTrailer" class="btn-trailer">
+        <button @click="openModal" class="btn-trailer">
           Watch Trailer
           <font-awesome-icon class="play-icon" :icon="['far', 'circle-play']" />
         </button>
-        <iframe
-          v-if="fetchTrailer"
-          :src="`https://www.youtube.com/embed/${trailerKey}`"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-          class="trailer-modal"
-        ></iframe>
       </div>
       <div class="right">
         <img
@@ -33,6 +25,20 @@
           alt="Background Image"
         />
       </div>
+    </div>
+    <div class="trailer-modal" v-if="showModal">
+      <font-awesome-icon
+        :icon="['fas', 'xmark']"
+        class="x-icon"
+        @click="openModal"
+      />
+      <iframe
+        :src="`https://www.youtube.com/embed/${trailerKey}`"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        class="trailer"
+      ></iframe>
     </div>
   </section>
   <section class="section-color">
@@ -132,13 +138,19 @@ const route = useRoute();
 const movieid = route.params.id;
 
 const trailerKey = ref(null);
+const showModal = ref(false);
 
-const fetchTrailer = async () => {
-  const { data } = await useFetch(`/api/movies/${movieid}/trailers`);
-  if (data) {
-    trailerKey.value = data.key;
+function openModal() {
+  showModal.value = !showModal.value;
+}
+
+onMounted(async () => {
+  const { data } = await useFetch(`/api/movies/${movieid}/trailer`);
+  console.log("API response", data.value);
+  if (data.value) {
+    trailerKey.value = data.value.key;
   }
-};
+});
 </script>
 
 <style scoped>
@@ -312,6 +324,44 @@ const fetchTrailer = async () => {
   font-size: 1.2rem;
   transform: translateX(0);
   transition: transform 0.3s ease;
+}
+
+.x-icon {
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.x-icon:hover {
+  background-color: hsla(243, 100%, 93%, 10%);
+}
+
+.trailer-modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: auto;
+  overflow-y: hidden;
+  z-index: 1000;
+  background-color: #000000c3;
+}
+
+.trailer {
+  width: 100%;
+  margin: 100px;
+  border: none;
 }
 
 .column-details .date {
