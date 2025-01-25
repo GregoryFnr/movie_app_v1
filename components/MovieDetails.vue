@@ -6,7 +6,7 @@
         <div class="row">
           <StarsRate :value="stars" />
           <div class="reviews">
-            {{ reviews }} reviews<span v-if="reviews.length >= 2">s</span>
+            {{ reviews }} review<span :v-if="reviews.length >= 2">s</span>
           </div>
           <div class="date">{{ date }}</div>
           <div class="runtime">
@@ -26,20 +26,7 @@
         />
       </div>
     </div>
-    <div class="trailer-modal" v-if="showModal">
-      <font-awesome-icon
-        :icon="['fas', 'xmark']"
-        class="x-icon"
-        @click="openModal"
-      />
-      <iframe
-        :src="`https://www.youtube.com/embed/${trailerKey}`"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-        class="trailer"
-      ></iframe>
-    </div>
+    <TrailerModal v-if="showModal" :showModal="showModal" @close="closeModal" />
   </section>
   <section class="section-color">
     <div class="section">
@@ -55,10 +42,6 @@
           />
         </div>
         <div class="right">
-          <!--<div class="film-title">
-            {{ title }}
-          </div>
-          -->
           <div class="film-overview">
             <h2 class="storyline">Storyline</h2>
             <p class="overview">{{ overview }}</p>
@@ -103,6 +86,13 @@
         </div>
       </div>
     </div>
+    <div class="section">
+      <!--CASTING-->
+      <div class="title-section">
+        <h2>The cast</h2>
+      </div>
+      <MovieCredits />
+    </div>
   </section>
 </template>
 
@@ -134,23 +124,15 @@ function formatDuration(minutes) {
   return `${hours}h${remainingMinutes.toString().padStart(2, "0")}`;
 }
 
-const route = useRoute();
-const movieid = route.params.id;
-
-const trailerKey = ref(null);
 const showModal = ref(false);
 
 function openModal() {
-  showModal.value = !showModal.value;
+  showModal.value = true;
 }
 
-onMounted(async () => {
-  const { data } = await useFetch(`/api/movies/${movieid}/trailer`);
-  console.log("API response", data.value);
-  if (data.value) {
-    trailerKey.value = data.value.key;
-  }
-});
+function closeModal() {
+  showModal.value = false;
+}
 </script>
 
 <style scoped>
@@ -162,6 +144,7 @@ onMounted(async () => {
 
 .section {
   margin: 25px auto;
+  padding: 0 40px;
 }
 
 .banner-columns {
@@ -324,44 +307,6 @@ onMounted(async () => {
   font-size: 1.2rem;
   transform: translateX(0);
   transition: transform 0.3s ease;
-}
-
-.x-icon {
-  color: #fff;
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  top: 0;
-  right: 0;
-  cursor: pointer;
-}
-
-.x-icon:hover {
-  background-color: hsla(243, 100%, 93%, 10%);
-}
-
-.trailer-modal {
-  display: flex;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  height: auto;
-  overflow-y: hidden;
-  z-index: 1000;
-  background-color: #000000c3;
-}
-
-.trailer {
-  width: 100%;
-  margin: 100px;
-  border: none;
 }
 
 .column-details .date {
