@@ -12,6 +12,17 @@
           <h3>
             {{ title }}
           </h3>
+          <div class="bottom">
+            <div v-for="genre in genres" :key="genre.id">
+              {{ genre.name }}
+            </div>
+            <p>
+              {{ date }}
+            </p>
+            <p>
+              {{ date }}
+            </p>
+          </div>
         </div>
       </div>
     </NuxtLink>
@@ -19,7 +30,7 @@
 </template>
 
 <script setup>
-defineProps(["movieid", "title", "date", "poster"]);
+const props = defineProps(["movieid", "title", "genres", "date", "poster"]);
 </script>
 
 <style scoped>
@@ -27,6 +38,7 @@ defineProps(["movieid", "title", "date", "poster"]);
   display: block;
   position: relative;
   width: 250px;
+  padding: 10px;
   min-height: 400px;
   border: 1px solid transparent;
   background-color: inherit;
@@ -55,7 +67,6 @@ defineProps(["movieid", "title", "date", "poster"]);
 .card-container {
   width: 100%;
   display: block;
-  padding: 10px;
 }
 
 .poster-film {
@@ -71,12 +82,24 @@ defineProps(["movieid", "title", "date", "poster"]);
 
 .info-film {
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .info-film h3 {
-  font-size: 1.11rem;
+  font-size: 1rem;
   font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.info-film .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.info-film .bottom p {
+  font-size: 0.88rem;
+  color: #ffffffcf;
   margin-bottom: 2px;
 }
 </style>

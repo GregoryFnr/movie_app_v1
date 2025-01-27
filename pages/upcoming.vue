@@ -1,4 +1,5 @@
 <template>
+  <div class="background-blur-color"></div>
   <section class="section">
     <div class="upcoming-container">
       <h1 class="title-upcoming">Upcoming Movies</h1>
@@ -73,7 +74,7 @@ onBeforeUnmount(() => {
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 10px;
   height: 100%;
 }
 

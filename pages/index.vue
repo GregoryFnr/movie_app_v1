@@ -32,6 +32,7 @@
               :title="movie.title"
               :date="movie.release_date"
               :poster="movie.poster_path"
+              :genres="movie.genres"
             />
           </swiper-slide>
         </swiper>

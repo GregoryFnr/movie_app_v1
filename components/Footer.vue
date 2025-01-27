@@ -1,5 +1,6 @@
 <template>
   <footer>
+    <div class="background-blur-color-footer"></div>
     <div class="footer-container">
       <div class="footer-contact">
         <h2>Follow me on</h2>
@@ -13,6 +14,11 @@
             <li>
               <a href="https://www.linkedin.com/in/gregory-fnr/" target="_blank"
                 ><font-awesome-icon :icon="['fab', 'linkedin']"
+              /></a>
+            </li>
+            <li>
+              <a href="" target="_blank"
+                ><font-awesome-icon :icon="['fab', 'x-twitter']"
               /></a>
             </li>
           </ul>
@@ -41,13 +47,16 @@ library.add(fas, fab);
 </script>
 <style scoped>
 footer {
+  position: relative;
   width: 100%;
   height: auto;
 }
 
 .footer-container {
+  position: relative;
   max-width: 1400px;
   margin: 0 auto;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,5 +111,21 @@ footer {
 
 .tmdb img {
   width: 150px;
+}
+
+.background-blur-color-footer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  aspect-ratio: 1.5;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 100%;
+  background: linear-gradient(270deg, #326ebd, #4582d1 60%, #22426b, #293241);
+  filter: blur(15vw);
+  transform: none;
+  opacity: 0.6;
+  width: 1400px;
+  right: calc(50% - 700px);
 }
 </style>
