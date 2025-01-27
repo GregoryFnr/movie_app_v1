@@ -20,6 +20,12 @@
       </div>
       <div class="copyright">
         <p>Created by Gregory.</p>
+        <div class="tmdb">
+          <p>Data provided by</p>
+          <a href="https://www.themoviedb.org/" target="_blank"
+            ><img src="/public/logo_tmdb.svg" alt=""
+          /></a>
+        </div>
       </div>
     </div>
   </footer>
@@ -81,5 +87,20 @@ footer {
   width: 100%;
   text-align: center;
   margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  gap: 4px;
+  font-size: 0.88rem;
+}
+
+.tmdb {
+  display: flex;
+  gap: 4px;
+  font-size: 0.88rem;
+}
+
+.tmdb img {
+  width: 150px;
 }
 </style>

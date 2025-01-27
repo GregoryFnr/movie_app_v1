@@ -38,6 +38,7 @@ const { data: credits, error } = await useFetch(
 }
 
 .swiper-slide {
+  height: 100%;
   display: flex;
   justify-content: center;
 }

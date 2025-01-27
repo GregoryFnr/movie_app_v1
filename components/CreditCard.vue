@@ -9,7 +9,7 @@
         />
       </div>
       <div class="poster-film-else" v-else>
-        <img src="/public/No-Image-Placeholder.png" alt="" />
+        <img src="/public/img-placeholder.png" alt="" />
       </div>
       <div class="info-film">
         <h3>
@@ -58,8 +58,7 @@ defineProps(["picture", "name", "character"]);
 
 .poster-film img {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  height: 100%;
 }
 
 .poster-film-else {
@@ -69,7 +68,7 @@ defineProps(["picture", "name", "character"]);
 
 .poster-film-else img {
   width: 100%;
-  height: 100%;
+  height: 320px;
   border-radius: 5px;
   min-height: 100%;
 }
