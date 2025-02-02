@@ -43,6 +43,7 @@ defineProps(["picture", "name", "character"]);
 .card:hover {
   border: 1px solid var(--primary);
   transform: translateY(-3px);
+  box-shadow: 0 0 10px 0 #0000005f;
 }
 
 .card-container {

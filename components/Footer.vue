@@ -90,6 +90,11 @@ footer {
 .contact-logo ul li a {
   color: #fff;
   font-size: 1.88rem;
+  transition: transform 0.2s ease;
+}
+
+.contact-logo ul li:hover {
+  transform: translateY(-2px);
 }
 
 .copyright {

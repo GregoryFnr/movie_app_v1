@@ -13,14 +13,11 @@
             {{ title }}
           </h3>
           <div class="bottom">
-            <div v-for="genre in genres" :key="genre.id">
-              {{ genre.name }}
-            </div>
             <p>
               {{ date }}
             </p>
             <p>
-              {{ date }}
+              {{ getGenreNames(genres) }}
             </p>
           </div>
         </div>
@@ -30,7 +27,15 @@
 </template>
 
 <script setup>
-const props = defineProps(["movieid", "title", "genres", "date", "poster"]);
+import { useGenreStore } from "@/stores/useGenreStore";
+const props = defineProps(["movieid", "title", "date", "genres", "poster"]);
+
+const genreStore = useGenreStore();
+
+// Fonction qui récupère les noms des genres à partir des IDs
+const getGenreNames = (ids) => {
+  return ids.map((id) => genreStore.genreMap[id] || "Inconnu").join(", ");
+};
 </script>
 
 <style scoped>
@@ -62,6 +67,7 @@ const props = defineProps(["movieid", "title", "genres", "date", "poster"]);
 .card:hover {
   border: 1px solid var(--primary);
   transform: translateY(-3px);
+  box-shadow: 0 0 10px 0 #0000005f;
 }
 
 .card-container {
