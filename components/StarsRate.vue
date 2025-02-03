@@ -27,9 +27,8 @@ const style = computed(() => ({
 
 <style scoped>
 .stars {
-  width: 120px;
+  width: 100px;
   height: auto;
-  font-size: 0.95rem;
 }
 
 .stars img {
@@ -37,13 +36,13 @@ const style = computed(() => ({
 }
 
 .stars-empty {
-  width: 120px;
+  width: 100px;
   position: absolute;
   inset: 0;
 }
 
 .stars-filled {
-  width: 120px;
+  width: 100px;
   position: absolute;
   inset: 0;
 }

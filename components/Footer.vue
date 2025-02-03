@@ -27,7 +27,7 @@
       <div class="copyright">
         <p>Created by Gregory.</p>
         <div class="tmdb">
-          <p>Data provided by</p>
+          <p>API & data from</p>
           <a href="https://www.themoviedb.org/" target="_blank"
             ><img src="/public/logo_tmdb.svg" alt=""
           /></a>
@@ -37,14 +37,6 @@
   </footer>
 </template>
 
-<script setup>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-library.add(fas, fab);
-</script>
 <style scoped>
 footer {
   position: relative;

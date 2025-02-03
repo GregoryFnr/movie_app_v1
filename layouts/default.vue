@@ -12,10 +12,10 @@
   <main>
     <slot></slot>
   </main>
-  <Footer />
+  <client-only>
+    <Footer />
+  </client-only>
 </template>
-
-<script setup></script>
 
 <style scoped>
 header {
@@ -39,10 +39,12 @@ header {
   display: block;
   position: relative;
   width: 100px;
+  height: 50px;
 }
 
 .logo img {
   max-width: 100px;
+  height: 50px;
 }
 
 .citation {

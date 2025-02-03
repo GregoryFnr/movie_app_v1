@@ -4,15 +4,18 @@
     <div class="upcoming-container">
       <h1 class="title-upcoming">Upcoming Movies</h1>
       <div class="movies-grid">
-        <MovieCard
-          v-for="movie in movies"
-          :key="movie.id"
-          :movieid="movie.id"
-          :title="movie.title"
-          :date="movie.release_date"
-          :poster="movie.poster_path"
-        >
-        </MovieCard>
+        <TransitionGroup name="fadeIn" appear>
+          <MovieCard
+            v-for="movie in movies"
+            :key="movie.id"
+            :movieid="movie.id"
+            :title="movie.title"
+            :date="movie.release_date"
+            :poster="movie.poster_path"
+            :stars="movie.vote_average"
+          >
+          </MovieCard>
+        </TransitionGroup>
         <div v-if="loading" class="loader">Loading...</div>
       </div>
     </div>
@@ -63,6 +66,17 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.fadeIn-enter-active,
+.fadeIn-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fadeIn-enter-from,
+.fadeIn-leave-to {
+  opacity: 0;
+  transform: translateX(15px);
+}
+
 .upcoming-container {
   padding: 20px;
 }

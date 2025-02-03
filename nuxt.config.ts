@@ -4,4 +4,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     movieKey: process.env.MOVIE_API_KEY,
   },
+  plugins: ["~/plugins/fontawesome.js"],
+  css: ["@fortawesome/fontawesome-svg-core/styles.css"],
 });

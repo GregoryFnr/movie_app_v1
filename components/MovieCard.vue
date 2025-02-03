@@ -16,9 +16,9 @@
             <p>
               {{ date }}
             </p>
-            <p>
-              {{ getGenreNames(genres) }}
-            </p>
+            <div class="stars">
+              <StarsRate :value="stars" class="stars-card" />
+            </div>
           </div>
         </div>
       </div>
@@ -27,15 +27,7 @@
 </template>
 
 <script setup>
-import { useGenreStore } from "@/stores/useGenreStore";
-const props = defineProps(["movieid", "title", "date", "genres", "poster"]);
-
-const genreStore = useGenreStore();
-
-// Fonction qui récupère les noms des genres à partir des IDs
-const getGenreNames = (ids) => {
-  return ids.map((id) => genreStore.genreMap[id] || "Inconnu").join(", ");
-};
+const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
 </script>
 
 <style scoped>
@@ -99,7 +91,7 @@ const getGenreNames = (ids) => {
 
 .info-film .bottom {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
 }
 
@@ -107,5 +99,14 @@ const getGenreNames = (ids) => {
   font-size: 0.88rem;
   color: #ffffffcf;
   margin-bottom: 2px;
+}
+
+.stars {
+  position: relative;
+  bottom: 0;
+}
+
+.stars-card .stars-empty {
+  width: 100px;
 }
 </style>
