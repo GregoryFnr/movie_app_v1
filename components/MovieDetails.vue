@@ -31,7 +31,13 @@
         />
       </div>
     </div>
-    <TrailerModal v-if="showModal" :showModal="showModal" @close="closeModal" />
+    <Transition name="fadeUp">
+      <TrailerModal
+        v-if="showModal"
+        :showModal="showModal"
+        @close="closeModal"
+      />
+    </Transition>
   </section>
   <section class="section-color">
     <div class="section">
@@ -134,6 +140,17 @@ function closeModal() {
 </script>
 
 <style scoped>
+.fadeUp-enter-active,
+.fadeUp-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fadeUp-enter-from,
+.fadeUp-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
 .hero-film {
   width: 100%;
   height: 100%;

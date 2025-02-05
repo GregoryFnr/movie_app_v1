@@ -20,11 +20,14 @@
       </div>
       <div class="card-section">
         <swiper
-          :slides-per-view="5"
-          :slides-per-group="5"
           :speed="600"
           :modules="[Navigation]"
           navigation
+          :breakpoints="{
+            640: { slidesPerView: 2, spaceBetween: 5, slidesPerGroup: 2 },
+            768: { slidesPerView: 3, spaceBetween: 10, slidesPerGroup: 3 },
+            1024: { slidesPerView: 5, spaceBetween: 10, slidesPerGroup: 5 },
+          }"
         >
           <swiper-slide v-for="movie in movies.results" :key="movie.id">
             <Transition name="card-fadeIn" appear>
