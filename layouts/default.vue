@@ -51,4 +51,21 @@ header {
   display: block;
   position: relative;
 }
+
+@media (max-width: 640px) {
+  .navbar .citation {
+    display: none;
+  }
+  .navbar {
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  .navbar .citation {
+    display: none;
+  }
+  .navbar {
+    justify-content: center;
+  }
+}
 </style>

@@ -109,4 +109,14 @@ const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
 .stars-card .stars-empty {
   width: 100px;
 }
+
+@media (max-width: 480px) {
+  .card .card-container .info-film .bottom p {
+    display: none;
+  }
+  .info-film .bottom {
+    flex-direction: row;
+    justify-content: left;
+  }
+}
 </style>

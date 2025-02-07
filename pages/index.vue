@@ -43,6 +43,9 @@
           </swiper-slide>
         </swiper>
       </div>
+      <div class="more-mobile">
+        <NuxtLink to="/upcoming" class="more-link">Discover more</NuxtLink>
+      </div>
     </div>
   </section>
 </template>
@@ -101,7 +104,7 @@ body {
 
 .section {
   max-width: 1400px;
-  padding: 0;
+  padding: 10px;
   margin: 75px auto;
   position: relative;
 }
@@ -168,6 +171,12 @@ body {
   text-align: end;
 }
 
+.more-mobile {
+  width: 100%;
+  display: none;
+  text-align: end;
+}
+
 .more-link {
   color: var(--text);
   transition: all 0.2s ease;
@@ -210,5 +219,109 @@ body {
   opacity: 0.6;
   width: 1100px;
   right: calc(50% - 700px);
+}
+
+/*BREAKPOINTS*/
+
+@media (max-width: 1200px) {
+  .section {
+    margin: 30px auto;
+  }
+  .hero {
+    height: 18vh;
+  }
+  .background-blur-color {
+    width: 700px;
+    right: calc(30% - 200px);
+    filter: blur(16vw);
+  }
+  .title-section h2 {
+    font-size: 1.3rem;
+  }
+  .main-title h1 {
+    font-size: 2.2rem;
+    line-height: 2.15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    margin: 30px auto;
+  }
+  .hero {
+    height: 16vh;
+  }
+  .background-blur-color {
+    width: 600px;
+    right: calc(50% - 300px);
+    filter: blur(19vw);
+  }
+  .title-section h2 {
+    font-size: 1.3rem;
+  }
+  .main-title h1 {
+    font-size: 2.2rem;
+    line-height: 2.15rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    margin: 25px auto;
+  }
+  .hero {
+    height: 14vh;
+  }
+  .background-blur-color {
+    width: 300px;
+    right: calc(50% - 200px);
+    filter: blur(19vw);
+  }
+  .title-section h2 {
+    font-size: 1.2rem;
+  }
+  .main-title h1 {
+    font-size: 2rem;
+    line-height: 1.95rem;
+  }
+  .more-mobile {
+    display: block;
+  }
+  .more {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    margin: 20px auto;
+  }
+  .hero {
+    height: 12vh;
+  }
+  .citation {
+    font-size: 0.88rem;
+  }
+  .background-blur-color {
+    width: 300px;
+    right: calc(50% - 200px);
+    filter: blur(19vw);
+  }
+  .title-section h2 {
+    font-size: 1.2rem;
+  }
+  .main-title {
+    width: 100%;
+  }
+  .main-title h1 {
+    font-size: 2rem;
+    line-height: 1.95rem;
+  }
+  .more-mobile {
+    display: block;
+  }
+  .more {
+    display: none;
+  }
 }
 </style>

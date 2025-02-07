@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="background-blur-color-footer"></div>
+    <!--<div class="background-blur-color-footer"></div>-->
     <div class="footer-container">
       <div class="footer-contact">
         <h2>Follow me on</h2>
@@ -124,5 +124,87 @@ footer {
   opacity: 0.6;
   width: 1400px;
   right: calc(50% - 700px);
+}
+
+/*BREAKPOINTS */
+@media (max-width: 1200px) {
+  .background-blur-color-footer {
+    width: 700px;
+    right: calc(30% - 200px);
+  }
+  .footer-contact h2 {
+    font-size: 1.5rem;
+  }
+  .contact-logo ul li a {
+    font-size: 1.3rem;
+  }
+  .contact-logo ul {
+    gap: 20px;
+  }
+  .footer-contact h2 {
+    margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .background-blur-color-footer {
+    width: 600px;
+    right: calc(50% - 200px);
+  }
+  .footer-contact h2 {
+    font-size: 1.5rem;
+  }
+  .contact-logo ul li a {
+    font-size: 1.3rem;
+  }
+  .contact-logo ul {
+    gap: 20px;
+  }
+  .footer-contact h2 {
+    margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 640px) {
+  .background-blur-color-footer {
+    width: 400px;
+    right: calc(50% - 200px);
+    filter: blur(20vw);
+  }
+  .footer-contact h2 {
+    font-size: 1.5rem;
+  }
+  .contact-logo ul li a {
+    font-size: 1.3rem;
+  }
+  .contact-logo ul {
+    gap: 20px;
+  }
+  .footer-contact h2 {
+    margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .background-blur-color-footer {
+    width: 300px;
+    right: calc(50% - 200px);
+    filter: blur(19vw);
+  }
+  .title-section h2 {
+    font-size: 1.2rem;
+  }
+  .main-title h1 {
+    font-size: 2rem;
+    line-height: 1.95rem;
+  }
+  .copyright {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  .copyright .tmdb {
+    justify-content: center;
+  }
 }
 </style>

@@ -1,5 +1,4 @@
 <template>
-  <div class="background-blur-color"></div>
   <section class="section">
     <div class="upcoming-container">
       <h1 class="title-upcoming">Upcoming Movies</h1>
@@ -77,6 +76,11 @@ onBeforeUnmount(() => {
   transform: translateX(15px);
 }
 
+.card {
+  width: auto;
+  min-height: 0;
+}
+
 .upcoming-container {
   padding: 20px;
 }
@@ -88,8 +92,10 @@ onBeforeUnmount(() => {
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  gap: 5px;
   height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .loader {
@@ -97,5 +103,41 @@ onBeforeUnmount(() => {
   padding: 20px;
   font-size: 16px;
   color: #fff;
+}
+
+/*BREAKPOINTS*/
+
+@media (max-width: 1200px) {
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    height: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3px;
+    row-gap: 6px;
+    height: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .title-upcoming {
+    font-size: 1.2rem;
+  }
 }
 </style>
