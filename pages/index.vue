@@ -10,6 +10,7 @@
       </div>
     </div>
   </section>
+  <TrendingMovie />
   <section class="section">
     <div class="container-card-section">
       <div class="title-section">
@@ -123,6 +124,9 @@ body {
 .hero-container {
   position: absolute;
   bottom: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .main-title {
@@ -239,7 +243,7 @@ body {
     font-size: 1.3rem;
   }
   .main-title h1 {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
     line-height: 2.15rem;
   }
 }
@@ -260,7 +264,7 @@ body {
     font-size: 1.3rem;
   }
   .main-title h1 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     line-height: 2.15rem;
   }
 }
@@ -281,7 +285,7 @@ body {
     font-size: 1.2rem;
   }
   .main-title h1 {
-    font-size: 2rem;
+    font-size: 2.4rem;
     line-height: 1.95rem;
   }
   .more-mobile {
@@ -314,7 +318,7 @@ body {
     width: 100%;
   }
   .main-title h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     line-height: 1.95rem;
   }
   .more-mobile {
