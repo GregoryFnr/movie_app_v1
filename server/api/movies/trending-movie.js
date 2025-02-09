@@ -7,12 +7,22 @@ export default defineEventHandler(async (event) => {
     const response = await $fetch(url);
 
     const now = new Date();
-    const recentMovie = response.results.find((movie) => {
+    const twoMonthsAgo = new Date(now.setMonth(now.getMonth() - 2));
+
+    // Filtrer les films récents
+    const recentMovies = response.results.filter((movie) => {
       const releaseDate = new Date(movie.release_date);
-      return releaseDate >= new Date(now.setMonth(now.getMonth() - 2));
+      return releaseDate >= twoMonthsAgo;
     });
 
-    return recentMovie || response.results[0];
+    // Trouver celui avec la plus grande popularité
+    const mostPopularMovie = recentMovies.reduce(
+      (prev, current) =>
+        prev.popularity > current.popularity ? prev : current,
+      recentMovies[0]
+    );
+
+    return mostPopularMovie || response.results[0]; // Si aucun film récent, prend le premier de la liste
   } catch (error) {
     return { error: "Erreur lors de la récupération du film tendance" };
   }
