@@ -5,7 +5,7 @@
         <h2>Suggestion of the month</h2>
       </div>
       <div class="more">
-        <NuxtLink :to="`movies/${movie.id}`" class="more-link">More</NuxtLink>
+        <p class="more-link">More</p>
       </div>
       <div
         class="trending-movie-container"
@@ -19,18 +19,41 @@
           <div class="title">
             <h1>{{ movie.title }}</h1>
           </div>
-          <StarsRate :value="movie.vote_average" />
+          <div class="row">
+            <StarsRate :value="movie.vote_average" />
+            <div class="reviews">{{ movie.vote_count }} reviews</div>
+            <div class="date">{{ movie.release_date }}</div>
+            <div class="trending-card">
+              <p class="font-effect">Trending</p>
+            </div>
+          </div>
           <div class="overview">
             <p>{{ movie.overview.slice(0, 300) }}...</p>
           </div>
         </div>
       </div>
     </NuxtLink>
+    <Transition name="fadeUp">
+      <TrailerModal
+        v-if="showModal"
+        :showModal="showModal"
+        @close="closeModal"
+      />
+    </Transition>
   </section>
 </template>
 
 <script setup>
 const { data: movie } = await useFetch("/api/movies/trending-movie");
+const showModal = ref(false);
+
+function openModal() {
+  showModal.value = true;
+}
+
+function closeModal() {
+  showModal.value = false;
+}
 </script>
 
 <style scoped>
@@ -39,14 +62,18 @@ const { data: movie } = await useFetch("/api/movies/trending-movie");
 }
 
 .stars {
-  position: relative;
-  height: 30px;
+  height: 20px;
+  margin-bottom: 5px;
 }
 
 .trending-movie {
   background-color: hsla(243, 100%, 93%, 0.027);
   padding: 25px;
   border-radius: 5px;
+}
+
+.trending-movie:hover .more-link {
+  color: var(--accent);
 }
 
 .trending-movie-container {
@@ -56,10 +83,7 @@ const { data: movie } = await useFetch("/api/movies/trending-movie");
   align-items: center;
   border-radius: 5px;
   transition: all 0.5s ease;
-}
-
-.trending-movie-container:hover {
-  height: 35vh;
+  z-index: -2;
 }
 
 .title-trending-movie {
@@ -78,16 +102,80 @@ const { data: movie } = await useFetch("/api/movies/trending-movie");
     #00000075,
     transparent
   );
+  z-index: -2;
 }
 
 .title {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   text-align: start;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.871);
 }
 
+.title h1 {
+  font-size: 2.2rem;
+}
+
 .overview {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.871);
+}
+
+.trending-card {
+  position: relative;
+  width: auto;
+  border: none;
+  padding: 3px 10px;
+  border-radius: 5px;
+  background: black;
+}
+
+.font-effect {
+  background: linear-gradient(
+    120deg,
+    var(--primary),
+    var(--primary),
+    var(--accent)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.trending-card::after,
+.trending-card::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), transparent 50%, #326ebd);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 2px;
+  border-radius: 5px;
+  animation: 5s spin linear infinite;
+}
+
+.trending-card::before {
+  filter: blur(1.3rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
 }
 </style>

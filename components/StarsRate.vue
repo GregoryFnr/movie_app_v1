@@ -28,6 +28,7 @@ const style = computed(() => ({
 <style scoped>
 .stars {
   width: 100px;
+  height: 100%;
 }
 
 .stars img {

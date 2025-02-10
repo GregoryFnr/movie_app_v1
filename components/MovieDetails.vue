@@ -140,13 +140,13 @@ function closeModal() {
 </script>
 
 <style scoped>
-.fadeUp-enter-active,
-.fadeUp-leave-active {
+:global(.fadeUp-enter-active),
+:global(.fadeUp-leave-active) {
   transition: all 0.5s ease;
 }
 
-.fadeUp-enter-from,
-.fadeUp-leave-to {
+:global(.fadeUp-enter-from),
+:global(.fadeUp-leave-to) {
   opacity: 0;
   transform: translateY(100px);
 }
@@ -187,7 +187,8 @@ function closeModal() {
   font-size: 2.8rem;
 }
 
-.row {
+:global(.row) {
+  height: 20px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -196,10 +197,10 @@ function closeModal() {
   margin-bottom: 10px;
 }
 
-.row .stars,
-.row .reviews,
-.row .runtime,
-.row .date {
+:global(.row .stars),
+:global(.row .reviews),
+:global(.row .runtime),
+:global(.row .date) {
   font-size: 0.95rem;
   color: #fff;
 }
@@ -276,6 +277,7 @@ function closeModal() {
 .date,
 .data-date,
 .runtime,
+.reviews,
 .data-runtime,
 .genres,
 .origins,
