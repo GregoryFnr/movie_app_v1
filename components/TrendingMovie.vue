@@ -17,12 +17,12 @@
       >
         <div class="title-trending-movie">
           <div class="title">
-            <h1>{{ movie.title }}</h1>
+            <h2>{{ movie.title }}</h2>
           </div>
           <div class="row">
             <StarsRate :value="movie.vote_average" />
             <div class="reviews">{{ movie.vote_count }} reviews</div>
-            <div class="date">{{ movie.release_date }}</div>
+            <div class="date">Released on {{ movie.release_date }}</div>
             <div class="trending-card">
               <p class="font-effect">Trending</p>
             </div>
@@ -61,11 +61,6 @@ function closeModal() {
   margin: 0 auto;
 }
 
-.stars {
-  height: 20px;
-  margin-bottom: 5px;
-}
-
 .trending-movie {
   background-color: hsla(243, 100%, 93%, 0.027);
   padding: 25px;
@@ -78,7 +73,7 @@ function closeModal() {
 
 .trending-movie-container {
   position: relative;
-  height: 30vh;
+  height: 50vh;
   display: flex;
   align-items: center;
   border-radius: 5px;
@@ -112,7 +107,7 @@ function closeModal() {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.871);
 }
 
-.title h1 {
+.title h2 {
   font-size: 2.2rem;
 }
 
@@ -155,7 +150,12 @@ function closeModal() {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-image: conic-gradient(from var(--angle), transparent 50%, #326ebd);
+  background-image: conic-gradient(
+    from var(--angle),
+    var(--accent),
+    var(--primary),
+    var(--accent)
+  );
   top: 50%;
   left: 50%;
   translate: -50% -50%;
@@ -176,6 +176,86 @@ function closeModal() {
   }
   to {
     --angle: 360deg;
+  }
+}
+
+/*BREAKPOINTS*/
+
+@media (max-width: 1200px) {
+  .title h2 {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .overview {
+    display: none;
+  }
+  .trending-movie-container {
+    height: 30vh;
+  }
+  .title-trending-movie {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    margin: 25px auto;
+  }
+  .hero {
+    height: 14vh;
+  }
+  .title-section {
+    margin-bottom: 15px;
+  }
+  .row {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 5px;
+  }
+  .trending-card p,
+  .row .reviews,
+  .row .date {
+    font-size: 0.78rem;
+  }
+  .trending-card {
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    margin: 20px auto;
+  }
+  .hero {
+    height: 12vh;
+  }
+  .citation {
+    font-size: 0.88rem;
+  }
+  .background-blur-color {
+    width: 300px;
+    right: calc(50% - 200px);
+    filter: blur(19vw);
+  }
+  .title-section h2 {
+    font-size: 1.2rem;
+  }
+  .main-title {
+    width: 100%;
+  }
+  .main-title h1 {
+    font-size: 2.2rem;
+    line-height: 1.95rem;
+  }
+  .more-mobile {
+    display: block;
+  }
+  .more {
+    display: none;
   }
 }
 </style>

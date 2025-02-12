@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="copyright">
-        <p>Created by Gregory.</p>
+        <p>Developed by Gregory.</p>
         <div class="tmdb">
           <p>API & data from</p>
           <a href="https://www.themoviedb.org/" target="_blank"
