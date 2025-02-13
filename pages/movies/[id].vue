@@ -12,6 +12,7 @@
       :genres="movie.genres"
       :origins="movie.production_countries"
       :productions="movie.production_companies"
+      :budget="movie.budget"
     />
   </div>
 </template>

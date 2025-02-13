@@ -1,6 +1,14 @@
 <template>
   <section class="hero-film">
     <div class="banner-columns">
+      <!--<div
+        class="banner-mobile"
+        :style="{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'top',
+        }"
+      ></div>-->
       <div class="left">
         <h1 class="title">{{ title }}</h1>
         <div class="row">
@@ -48,8 +56,8 @@
         <div class="left">
           <img
             class="poster-film"
-            :src="`https://image.tmdb.org/t/p/w500/` + poster"
-            alt="Poster Film"
+            :src="`https://image.tmdb.org/t/p/original/` + poster"
+            :alt="`${title}`"
           />
         </div>
         <div class="right">
@@ -93,6 +101,8 @@
                 }}<span v-if="index < productions.length - 1">,</span>
               </div>
             </div>
+            <div class="budget">Budget</div>
+            <div class="data-budget">{{ budget }}$</div>
           </div>
         </div>
       </div>
@@ -120,6 +130,7 @@ const props = defineProps([
   "genres",
   "origins",
   "productions",
+  "budget",
 ]);
 
 function formatDuration(minutes) {
@@ -202,7 +213,7 @@ function closeModal() {
 :global(.row .runtime),
 :global(.row .date) {
   font-size: 0.95rem;
-  color: #fff;
+  color: #ffffff;
 }
 
 .banner-columns .right {
@@ -241,11 +252,14 @@ function closeModal() {
 
 .column-id {
   display: flex;
+  justify-content: center;
 }
 
 .poster-film {
-  width: 300px;
+  width: 350px;
+  height: 550px;
   border-radius: 5px;
+  aspect-ratio: 10/16;
 }
 
 .column-id .right {
@@ -282,7 +296,9 @@ function closeModal() {
 .genres,
 .origins,
 .data-origins,
-.productions {
+.productions,
+.budget,
+.data-budget {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -377,6 +393,11 @@ function closeModal() {
   gap: 5px;
 }
 
+.data-budget {
+  grid-column: 4 / 4;
+  grid-row: 3 / 3;
+}
+
 .film-title {
   font-size: 3.5rem;
   color: #fff;
@@ -404,5 +425,108 @@ function closeModal() {
   border-radius: 5px;
   color: #fff;
   font-size: 0.88rem;
+}
+
+/*BREAKPOINTS*/
+
+@media (max-width: 1200px) {
+  .banner-columns .left {
+    width: 66%;
+  }
+  .banner-columns .left .title {
+    font-size: 2.5rem;
+  }
+  .overview {
+    font-size: 0.88rem;
+    margin-bottom: 5px;
+  }
+  .info-film {
+    margin-bottom: 25px;
+  }
+  .card-genres-film,
+  .card-origins-film {
+    padding: 3px 10px;
+    font-size: 0.78rem;
+  }
+  .date,
+  .data-date,
+  .runtime,
+  .reviews,
+  .data-runtime,
+  .genres,
+  .origins,
+  .data-origins,
+  .productions,
+  .budget,
+  .data-budget {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 0.78rem;
+    color: #fff;
+  }
+}
+
+@media (max-width: 960px) {
+}
+
+@media (max-width: 640px) {
+  .section {
+    margin: 25px auto;
+  }
+  .hero {
+    height: 14vh;
+  }
+  .background-blur-color {
+    width: 300px;
+    right: calc(50% - 200px);
+    filter: blur(19vw);
+  }
+  .title-section h2 {
+    font-size: 1.2rem;
+  }
+  .main-title h1 {
+    font-size: 2.4rem;
+    line-height: 1.95rem;
+  }
+  .more-mobile {
+    display: block;
+  }
+  .more {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    margin: 20px auto;
+  }
+  .hero {
+    height: 12vh;
+  }
+  .citation {
+    font-size: 0.88rem;
+  }
+  .background-blur-color {
+    width: 300px;
+    right: calc(50% - 200px);
+    filter: blur(19vw);
+  }
+  .title-section h2 {
+    font-size: 1.2rem;
+  }
+  .main-title {
+    width: 100%;
+  }
+  .main-title h1 {
+    font-size: 2.2rem;
+    line-height: 1.95rem;
+  }
+  .more-mobile {
+    display: block;
+  }
+  .more {
+    display: none;
+  }
 }
 </style>

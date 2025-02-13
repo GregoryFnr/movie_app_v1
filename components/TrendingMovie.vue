@@ -200,15 +200,6 @@ function closeModal() {
 }
 
 @media (max-width: 640px) {
-  .section {
-    margin: 25px auto;
-  }
-  .hero {
-    height: 14vh;
-  }
-  .title-section {
-    margin-bottom: 15px;
-  }
   .row {
     display: flex;
     position: relative;

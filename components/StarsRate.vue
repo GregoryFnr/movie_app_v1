@@ -49,7 +49,6 @@ const style = computed(() => ({
 
 @media (max-width: 640px) {
   .stars {
-    height: 80px;
     margin-bottom: 20px;
   }
   .stars-empty,
