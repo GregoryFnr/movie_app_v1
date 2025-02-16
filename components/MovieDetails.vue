@@ -102,7 +102,7 @@
               </div>
             </div>
             <div class="budget">Budget</div>
-            <div class="data-budget">{{ budget }}$</div>
+            <div class="data-budget">{{ formatBudget }}$</div>
           </div>
         </div>
       </div>
@@ -132,6 +132,10 @@ const props = defineProps([
   "productions",
   "budget",
 ]);
+
+const formatBudget = computed(() => {
+  return props.budget.toLocaleString("en-EN");
+});
 
 function formatDuration(minutes) {
   const hours = Math.floor(minutes / 60);

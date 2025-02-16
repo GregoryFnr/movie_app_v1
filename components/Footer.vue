@@ -53,12 +53,12 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 35px;
+  padding: 15px;
 }
 
 .footer-contact {
   width: auto;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
 }
 
 .footer-contact h2 {
@@ -76,6 +76,15 @@ footer {
 
 .contact-logo ul li {
   list-style: none;
+}
+
+.contact-logo ul li svg {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.contact-logo ul li svg:hover {
+  background-color: hsla(243, 100%, 93%, 10%);
 }
 
 .contact-logo ul li,

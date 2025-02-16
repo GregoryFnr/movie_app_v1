@@ -201,6 +201,7 @@ function closeModal() {
 
 @media (max-width: 640px) {
   .row {
+    height: auto;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -214,6 +215,9 @@ function closeModal() {
   }
   .trending-card {
     margin-top: 5px;
+  }
+  .title-section h2 {
+    margin-bottom: 10px;
   }
 }
 

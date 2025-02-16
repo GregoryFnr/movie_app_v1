@@ -222,7 +222,7 @@ body {
   transform: none;
   opacity: 0.6;
   width: 1100px;
-  right: calc(50% - 700px);
+  right: calc(50% - 500px);
 }
 
 /*BREAKPOINTS*/
@@ -246,6 +246,9 @@ body {
     font-size: 2.6rem;
     line-height: 2.15rem;
   }
+  .container-card-section {
+    margin: 35px auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -266,6 +269,9 @@ body {
   .main-title h1 {
     font-size: 2.4rem;
     line-height: 2.15rem;
+  }
+  .container-card-section {
+    margin: 20px auto;
   }
 }
 
@@ -293,6 +299,9 @@ body {
   }
   .more {
     display: none;
+  }
+  .container-card-section {
+    margin: 0 auto;
   }
 }
 
