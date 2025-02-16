@@ -1,6 +1,5 @@
 <template>
   <div class="card">
-    <!--<NuxtLink :to="`movies/${movieid}`">-->
     <div class="card-container">
       <div class="poster-film" v-if="picture">
         <img
@@ -20,7 +19,6 @@
         </p>
       </div>
     </div>
-    <!--</NuxtLink>-->
   </div>
 </template>
 
@@ -32,7 +30,7 @@ defineProps(["picture", "name", "character"]);
 .card {
   display: block;
   position: relative;
-  width: 250px;
+  width: auto;
   min-height: 400px;
   border: 1px solid transparent;
   background-color: inherit;

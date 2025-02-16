@@ -114,6 +114,13 @@
       </div>
       <MovieCredits />
     </div>
+    <div class="section">
+      <!--RECOMMANDATIONS-->
+      <div class="title-section">
+        <h2>Recommandations</h2>
+      </div>
+      <MovieRecommandations />
+    </div>
   </section>
 </template>
 

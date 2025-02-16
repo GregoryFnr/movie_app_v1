@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <NuxtLink :to="`movies/${movieid}`">
+    <NuxtLink :to="`${movieid}`">
       <div class="card-container">
         <div class="poster-film">
           <img
@@ -53,72 +53,6 @@ const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
   }
   to {
     opacity: 1;
-  }
-}
-</style>
-
-<style>
-.card:hover {
-  border: 1px solid var(--primary);
-  transform: translateY(-3px);
-  box-shadow: 0 0 10px 0 #0000005f;
-}
-
-.card-container {
-  width: 100%;
-  display: block;
-}
-
-.poster-film {
-  width: 100%;
-  height: 100%;
-}
-
-.poster-film img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-.info-film {
-  width: 100%;
-  text-align: left;
-}
-
-.info-film h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.info-film .bottom {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
-
-.info-film .bottom p {
-  font-size: 0.88rem;
-  color: #ffffffcf;
-  margin-bottom: 2px;
-}
-
-.stars {
-  position: relative;
-  bottom: 0;
-}
-
-.stars-card .stars-empty {
-  width: 100px;
-}
-
-@media (max-width: 480px) {
-  .card .card-container .info-film .bottom p {
-    display: none;
-  }
-  .info-film .bottom {
-    flex-direction: row;
-    justify-content: left;
   }
 }
 </style>
