@@ -31,7 +31,6 @@ defineProps(["picture", "name", "character"]);
   display: block;
   position: relative;
   width: auto;
-  min-height: 400px;
   border: 1px solid transparent;
   background-color: inherit;
   border-radius: 10px;
@@ -67,7 +66,7 @@ defineProps(["picture", "name", "character"]);
 
 .poster-film-else img {
   width: 100%;
-  height: 320px;
+  height: auto;
   border-radius: 5px;
   min-height: 100%;
 }
@@ -78,12 +77,23 @@ defineProps(["picture", "name", "character"]);
 }
 
 .info-film h3 {
-  font-size: 1.11rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 2px;
 }
 
 .character-name {
   color: #ffffffc3;
+}
+
+@media (max-width: 1200px) {
+  .info-film h3 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 1024px) {
+  .card {
+    width: 250px;
+  }
 }
 </style>

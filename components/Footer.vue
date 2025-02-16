@@ -53,7 +53,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 35px 15px 15px 15px;
 }
 
 .footer-contact {

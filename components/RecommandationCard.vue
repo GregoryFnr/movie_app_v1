@@ -13,9 +13,6 @@
             {{ title }}
           </h3>
           <div class="bottom">
-            <p>
-              {{ date }}
-            </p>
             <div class="stars">
               <StarsRate :value="stars" class="stars-card" />
             </div>
@@ -36,7 +33,6 @@ const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
   position: relative;
   width: auto;
   padding: 10px;
-  min-height: 400px;
   border: 1px solid transparent;
   background-color: inherit;
   border-radius: 10px;
@@ -54,5 +50,26 @@ const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
   to {
     opacity: 1;
   }
+}
+
+.card:hover {
+  border: 1px solid var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px 0 #0000005f;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    width: 250px;
+  }
+}
+
+.info-film .bottom {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.info-film .bottom .stars {
+  width: 100%;
 }
 </style>

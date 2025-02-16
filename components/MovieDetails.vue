@@ -1,14 +1,14 @@
 <template>
   <section class="hero-film">
     <div class="banner-columns">
-      <!--<div
+      <div
         class="banner-mobile"
         :style="{
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop})`,
           backgroundSize: 'cover',
           backgroundPosition: 'top',
         }"
-      ></div>-->
+      ></div>
       <div class="left">
         <h1 class="title">{{ title }}</h1>
         <div class="row">
@@ -21,7 +21,7 @@
             {{ formatDuration(runtime) }}
           </div>
         </div>
-        <p class="overview">{{ overview }}</p>
+        <p class="overview-top">{{ overview }}</p>
         <button @click="openModal" class="btn-trailer">
           Watch Trailer
           <ClientOnly>
@@ -285,7 +285,7 @@ function closeModal() {
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(4, max-content);
   grid-column-gap: 30px;
-  grid-row-gap: 15px;
+  grid-row-gap: 25px;
 }
 
 .film-overview {
@@ -315,6 +315,12 @@ function closeModal() {
   align-items: center;
   font-size: 0.88rem;
   color: #fff;
+}
+
+.overview-top {
+  font-size: 0.98rem;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
 .overview {
@@ -356,57 +362,13 @@ function closeModal() {
 .column-details .date {
   display: flex;
   align-items: center;
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-
-.data-date {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-}
-
-.column-details .runtime {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-}
-
-.data-runtime {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-}
-
-.genres {
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
-}
-
-.data-genres {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-}
-
-.origins {
-  grid-column: 3 / 4;
-  grid-row: 1 / 2;
-}
-
-.data-origins {
-  grid-column: 4 / 4;
-  grid-row: 1 / 2;
 }
 
 .data-productions {
-  grid-column: 4 / 4;
-  grid-row: 2 / 3;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 5px;
-}
-
-.data-budget {
-  grid-column: 4 / 4;
-  grid-row: 3 / 3;
 }
 
 .film-title {
@@ -448,16 +410,21 @@ function closeModal() {
     font-size: 2.5rem;
   }
   .overview {
-    font-size: 0.88rem;
+    font-size: 0.83rem;
     margin-bottom: 5px;
   }
   .info-film {
     margin-bottom: 25px;
   }
+
+  .poster-film {
+    width: 300px;
+    height: 500px;
+  }
   .card-genres-film,
   .card-origins-film {
     padding: 3px 10px;
-    font-size: 0.78rem;
+    font-size: 0.83rem;
   }
   .date,
   .data-date,
@@ -473,71 +440,70 @@ function closeModal() {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     color: #fff;
+  }
+  .overview-top {
+    display: none;
   }
 }
 
 @media (max-width: 960px) {
+  .column-details {
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: repeat(2, max-content);
+    grid-column-gap: 20px;
+    grid-row-gap: 9px;
+  }
+  .storyline {
+    font-size: 1.4rem;
+  }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .section {
     margin: 25px auto;
   }
-  .hero {
-    height: 14vh;
+  .column-id .left {
+    display: none;
   }
-  .background-blur-color {
-    width: 300px;
-    right: calc(50% - 200px);
-    filter: blur(19vw);
+  .column-id .right {
+    width: 100%;
+    padding: 15px;
+    margin: 0 auto;
   }
-  .title-section h2 {
+  .storyline {
     font-size: 1.2rem;
   }
-  .main-title h1 {
-    font-size: 2.4rem;
-    line-height: 1.95rem;
+  .banner-columns .left .title {
+    margin-bottom: 5px;
+    font-size: 2rem;
   }
-  .more-mobile {
-    display: block;
+  .btn-trailer {
+    font-size: 0.88rem;
+    padding: 12px 45px;
+    background-color: #000000bb;
   }
-  .more {
+  .banner-columns .left {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.488);
+    padding: 0 45px;
+  }
+  .banner-columns .right {
     display: none;
+  }
+  .banner-mobile {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
   }
 }
 
 @media (max-width: 480px) {
-  .section {
-    margin: 20px auto;
-  }
-  .hero {
-    height: 12vh;
-  }
-  .citation {
-    font-size: 0.88rem;
-  }
-  .background-blur-color {
-    width: 300px;
-    right: calc(50% - 200px);
-    filter: blur(19vw);
-  }
-  .title-section h2 {
-    font-size: 1.2rem;
-  }
-  .main-title {
-    width: 100%;
-  }
-  .main-title h1 {
-    font-size: 2.2rem;
-    line-height: 1.95rem;
-  }
-  .more-mobile {
-    display: block;
-  }
-  .more {
-    display: none;
+  .banner-columns .left .title {
+    font-size: 1.3rem;
   }
 }
 </style>

@@ -213,6 +213,10 @@ function closeModal() {
   .row .date {
     font-size: 0.78rem;
   }
+  .stars {
+    margin-bottom: 20px;
+  }
+
   .trending-card {
     margin-top: 5px;
   }

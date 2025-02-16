@@ -36,7 +36,6 @@ const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
   position: relative;
   width: auto;
   padding: 10px;
-  min-height: 400px;
   border: 1px solid transparent;
   background-color: inherit;
   border-radius: 10px;
@@ -53,6 +52,12 @@ const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
   }
   to {
     opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .card {
+    width: 250px;
   }
 }
 </style>
