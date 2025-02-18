@@ -140,6 +140,12 @@ const props = defineProps([
   "budget",
 ]);
 
+const isClient = ref(false);
+
+onMounted(() => {
+  isClient.value = true;
+});
+
 const formatBudget = computed(() => {
   return props.budget.toLocaleString("en-EN");
 });
@@ -162,6 +168,8 @@ function closeModal() {
 </script>
 
 <style scoped>
+/*TRANSITIONS*/
+
 :global(.fadeUp-enter-active),
 :global(.fadeUp-leave-active) {
   transition: all 0.5s ease;

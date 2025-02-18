@@ -3,7 +3,7 @@
     <div class="upcoming-container">
       <h1 class="title-upcoming">Upcoming Movies</h1>
       <div class="movies-grid">
-        <TransitionGroup name="fadeIn" appear>
+        <TransitionGroup name="fadeInX" appear>
           <MovieCard
             v-for="movie in movies"
             :key="movie.id"
@@ -116,17 +116,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.fadeIn-enter-active,
-.fadeIn-leave-active {
-  transition: all 0.5s ease;
-}
-
-.fadeIn-enter-from,
-.fadeIn-leave-to {
-  opacity: 0;
-  transform: translateX(15px);
-}
-
 .card {
   width: auto;
   min-height: 0;

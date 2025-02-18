@@ -221,40 +221,20 @@ function closeModal() {
     margin-top: 5px;
   }
   .title-section h2 {
+    font-size: 1rem;
     margin-bottom: 10px;
+  }
+  .title h2 {
+    font-size: 1.3rem;
   }
 }
 
 @media (max-width: 480px) {
-  .section {
-    margin: 20px auto;
+  .title h2 {
+    font-size: 1.1rem;
   }
-  .hero {
-    height: 12vh;
-  }
-  .citation {
-    font-size: 0.88rem;
-  }
-  .background-blur-color {
-    width: 300px;
-    right: calc(50% - 200px);
-    filter: blur(19vw);
-  }
-  .title-section h2 {
-    font-size: 1.2rem;
-  }
-  .main-title {
-    width: 100%;
-  }
-  .main-title h1 {
-    font-size: 2.2rem;
-    line-height: 1.95rem;
-  }
-  .more-mobile {
-    display: block;
-  }
-  .more {
-    display: none;
+  .trending-card p {
+    font-size: 0.68rem;
   }
 }
 </style>
