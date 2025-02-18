@@ -71,5 +71,6 @@ const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
 
 .info-film .bottom .stars {
   width: 100%;
+  padding-bottom: 10px;
 }
 </style>

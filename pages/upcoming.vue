@@ -12,8 +12,7 @@
             :date="movie.release_date"
             :poster="movie.poster_path"
             :stars="movie.vote_average"
-          >
-          </MovieCard>
+          />
         </TransitionGroup>
         <div v-if="loading" class="loader">Loading...</div>
       </div>
