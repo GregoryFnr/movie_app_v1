@@ -14,7 +14,7 @@
           </h3>
           <div class="bottom">
             <p>
-              {{ date }}
+              {{ reviews }} review<span :v-if="reviews.length >= 2">s</span>
             </p>
             <div class="stars">
               <StarsRate :value="stars" class="stars-card" />
@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
+const props = defineProps(["movieid", "stars", "reviews", "title", "poster"]);
 </script>
 
 <style scoped>
@@ -124,6 +124,9 @@ const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
   .info-film .bottom {
     flex-direction: row;
     justify-content: left;
+  }
+  .info-film h3 {
+    font-size: 0.88rem;
   }
 }
 </style>

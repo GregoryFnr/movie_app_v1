@@ -314,7 +314,6 @@ function closeModal() {
 .data-runtime,
 .genres,
 .origins,
-.data-origins,
 .productions,
 .budget,
 .data-budget {
@@ -372,28 +371,17 @@ function closeModal() {
   align-items: center;
 }
 
-.data-productions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 5px;
-}
-
 .film-title {
   font-size: 3.5rem;
   color: #fff;
 }
 
-.data-genres {
+.data-genres,
+.data-productions,
+.data-origins {
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 5px;
-}
-
-.data-origins {
-  display: flex;
   align-items: center;
   gap: 5px;
 }
@@ -441,7 +429,6 @@ function closeModal() {
   .data-runtime,
   .genres,
   .origins,
-  .data-origins,
   .productions,
   .budget,
   .data-budget {
@@ -461,7 +448,7 @@ function closeModal() {
     grid-template-columns: max-content 1fr;
     grid-template-rows: repeat(2, max-content);
     grid-column-gap: 20px;
-    grid-row-gap: 9px;
+    grid-row-gap: 18px;
   }
   .storyline {
     font-size: 1.4rem;
@@ -512,6 +499,13 @@ function closeModal() {
 @media (max-width: 480px) {
   .banner-columns .left .title {
     font-size: 1.3rem;
+  }
+  .row .date,
+  .row .runtime {
+    display: none;
+  }
+  .btn-trailer {
+    padding: 8px 35px;
   }
 }
 </style>

@@ -73,13 +73,17 @@ defineProps(["picture", "name", "character"]);
 
 .info-film {
   width: 100%;
-  text-align: center;
+  text-align: start;
+  line-height: 1.2rem;
+}
+
+.info-film p {
+  font-size: 0.88rem;
 }
 
 .info-film h3 {
   font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 2px;
 }
 
 .character-name {
@@ -94,6 +98,24 @@ defineProps(["picture", "name", "character"]);
 @media (max-width: 1024px) {
   .card {
     width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-film {
+    line-height: 1rem;
+  }
+  .info-film h3 {
+    font-size: 0.78rem;
+  }
+  .info-film p {
+    font-size: 0.68rem;
   }
 }
 </style>

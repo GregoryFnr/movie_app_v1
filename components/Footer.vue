@@ -200,6 +200,9 @@ footer {
     right: calc(50% - 200px);
     filter: blur(19vw);
   }
+  .footer-contact {
+    margin-bottom: 25px;
+  }
   .title-section h2 {
     font-size: 1.2rem;
   }
@@ -210,10 +213,18 @@ footer {
   .copyright {
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 20px;
   }
   .copyright .tmdb {
     justify-content: center;
+    align-items: center;
+  }
+  .copyright .tmdb a img {
+    width: 110px;
+  }
+  .copyright p {
+    font-size: 0.88rem;
   }
 }
 </style>

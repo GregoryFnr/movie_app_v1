@@ -35,10 +35,9 @@
               <MovieCard
                 :movieid="movie.id"
                 :title="movie.title"
-                :date="movie.release_date"
                 :poster="movie.poster_path"
-                :genreid="movie.genre_ids"
                 :stars="movie.vote_average"
+                :reviews="movie.vote_count"
               />
             </swiper-slide>
           </swiper>

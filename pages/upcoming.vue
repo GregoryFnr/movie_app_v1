@@ -9,7 +9,7 @@
             :key="movie.id"
             :movieid="movie.id"
             :title="movie.title"
-            :date="movie.release_date"
+            :reviews="movie.vote_count"
             :poster="movie.poster_path"
             :stars="movie.vote_average"
           />
