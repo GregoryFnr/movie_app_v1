@@ -479,6 +479,9 @@ function closeModal() {
     padding: 12px 45px;
     background-color: #000000bb;
   }
+  .banner-columns {
+    min-height: 30vh;
+  }
   .banner-columns .left {
     width: 100%;
     background: rgba(0, 0, 0, 0.488);
@@ -506,6 +509,15 @@ function closeModal() {
   }
   .btn-trailer {
     padding: 8px 35px;
+  }
+  .section-color {
+    padding: 10px 0;
+  }
+  .info-film {
+    margin-bottom: 15px;
+  }
+  .info-film h2 {
+    font-size: 1.3rem;
   }
 }
 </style>

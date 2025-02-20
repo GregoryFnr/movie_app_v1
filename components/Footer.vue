@@ -203,6 +203,9 @@ footer {
   .footer-contact {
     margin-bottom: 25px;
   }
+  .contact-logo ul {
+    gap: 5px;
+  }
   .title-section h2 {
     font-size: 1.2rem;
   }

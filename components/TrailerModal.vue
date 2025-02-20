@@ -66,6 +66,8 @@ onMounted(async () => {
 
 .trailer-modal {
   display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   right: 0;

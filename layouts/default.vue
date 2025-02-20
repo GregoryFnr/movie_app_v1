@@ -64,6 +64,13 @@ header {
   .navbar .citation {
     display: none;
   }
+  .logo {
+    width: auto;
+    height: 35px;
+  }
+  .logo img {
+    height: 35px;
+  }
   .navbar {
     justify-content: center;
   }

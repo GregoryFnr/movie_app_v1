@@ -236,5 +236,8 @@ function closeModal() {
   .trending-card p {
     font-size: 0.68rem;
   }
+  .date {
+    display: none;
+  }
 }
 </style>
