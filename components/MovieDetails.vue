@@ -484,7 +484,7 @@ function closeModal() {
   }
   .banner-columns .left {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     background: rgba(0, 0, 0, 0.488);
     padding: 0 45px;
   }
