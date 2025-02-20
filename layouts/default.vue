@@ -5,7 +5,7 @@
         <img src="/public/logo-cinema.png" alt="Logo" />
       </NuxtLink>
       <div class="citation">
-        <p>Enjoy films and discover new ones</p>
+        <p style="font-style: italic">Cinema is truth 24 frames per second.</p>
       </div>
     </div>
   </header>

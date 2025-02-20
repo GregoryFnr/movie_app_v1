@@ -117,6 +117,11 @@ const props = defineProps(["movieid", "stars", "reviews", "title", "poster"]);
   width: 100px;
 }
 
+@media (max-width: 640px) {
+  .card .stars {
+    margin-bottom: 10px;
+  }
+}
 @media (max-width: 480px) {
   .card .card-container .info-film .bottom p {
     display: none;
