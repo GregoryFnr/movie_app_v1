@@ -1,5 +1,5 @@
 <template>
-  <div class="trailer-modal">
+  <div class="trailer-modal" @click="close">
     <font-awesome-icon :icon="['fas', 'xmark']" class="x-icon" @click="close" />
     <iframe
       :src="`https://www.youtube.com/embed/${trailerKey}`"
@@ -74,16 +74,16 @@ onMounted(async () => {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   height: auto;
-  overflow-y: hidden;
   z-index: 1000;
   background-color: #000000c3;
 }
 
 .trailer {
   width: 100%;
+  height: 100%;
   margin: 100px;
   border: none;
+  overflow-y: none;
 }
 </style>
