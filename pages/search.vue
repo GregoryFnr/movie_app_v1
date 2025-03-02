@@ -96,8 +96,10 @@ const movies = ref([]);
 const loading = ref(false);
 const error = ref(null);
 
+const debouncedSearchInput = refDebounced(searchInput, 700);
+
 const fetchMovies = async () => {
-  if (!searchInput.value) {
+  if (!debouncedSearchInput.value) {
     movies.value = [];
     return;
   }
@@ -107,7 +109,7 @@ const fetchMovies = async () => {
 
   try {
     const response = await $fetch(`/api/movies/search`, {
-      query: { searchInput: searchInput.value },
+      query: { searchInput: debouncedSearchInput.value },
     });
 
     movies.value = response.results || [];
@@ -118,11 +120,14 @@ const fetchMovies = async () => {
   }
 };
 
-const debouncedSearchInput = refDebounced(searchInput, 700);
+watch(debouncedSearchInput, (newQuery) => {
+  if (newQuery) {
+    fetchMovies();
+  }
+});
 
 watch(searchInput, (newQuery) => {
   router.replace({ path: "/search", query: { query: newQuery } });
-  debouncedSearchInput();
 });
 
 onMounted(() => {
