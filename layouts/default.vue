@@ -7,6 +7,11 @@
       <div class="citation">
         <p style="font-style: italic">Cinema is truth 24 frames per second.</p>
       </div>
+      <NuxtLink to="search" class="search"
+        ><span class="search-icon"
+          ><font-awesome-icon :icon="['fas', 'magnifying-glass']" /></span
+        >Search movies
+      </NuxtLink>
     </div>
   </header>
   <main>
@@ -50,6 +55,31 @@ header {
 .citation {
   display: block;
   position: relative;
+}
+
+.citation p {
+  font-style: italic;
+  font-size: 0.88rem;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  font-size: 0.88rem;
+  position: relative;
+  padding: 5px;
+  border: 1px solid hsla(243, 100%, 93%, 0.153);
+  border-radius: 5px;
+  background-color: hsla(243, 100%, 93%, 0.027);
+  color: hsla(243, 100%, 93%, 0.753);
+  text-decoration: none;
+  transition: background-color, border 0.2s;
+}
+
+.search:hover {
+  border: 1px solid var(--primary);
 }
 
 @media (max-width: 640px) {
