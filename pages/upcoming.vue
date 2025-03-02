@@ -129,6 +129,16 @@ onBeforeUnmount(() => {
   margin-bottom: 10px;
 }
 
+/*BREAKPOINTS*/
+
+@media (max-width: 640px) {
+  .title-upcoming {
+    font-size: 1.2rem;
+  }
+}
+</style>
+
+<style>
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -185,12 +195,6 @@ onBeforeUnmount(() => {
     column-gap: 3px;
     row-gap: 6px;
     height: 100%;
-  }
-}
-
-@media (max-width: 640px) {
-  .title-upcoming {
-    font-size: 1.2rem;
   }
 }
 </style>
