@@ -13,9 +13,7 @@
         <h1 class="title">{{ title }}</h1>
         <div class="row">
           <StarsRate :value="stars" />
-          <div class="reviews">
-            {{ reviews }} review<span :v-if="reviews.length >= 2">s</span>
-          </div>
+          <div class="reviews">{{ reviews }} reviews</div>
           <div class="date">{{ date }}</div>
           <div class="runtime">
             {{ formatDuration(runtime) }}
