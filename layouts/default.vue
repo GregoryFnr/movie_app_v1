@@ -8,8 +8,10 @@
         <p style="font-style: italic">Cinema is truth 24 frames per second.</p>
       </div>
       <NuxtLink to="search" class="search"
-        ><span class="search-icon"
-          ><font-awesome-icon :icon="['fas', 'magnifying-glass']" /></span
+        ><ClientOnly
+          ><span class="search-icon"
+            ><font-awesome-icon
+              :icon="['fas', 'magnifying-glass']" /></span></ClientOnly
         >Search movies
       </NuxtLink>
     </div>
