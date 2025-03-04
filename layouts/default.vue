@@ -7,7 +7,7 @@
       <div class="citation">
         <p style="font-style: italic">Cinema is truth 24 frames per second.</p>
       </div>
-      <NuxtLink to="search" class="search"
+      <NuxtLink to="/search" class="search"
         ><ClientOnly
           ><span class="search-icon"
             ><font-awesome-icon
@@ -71,7 +71,7 @@ header {
   column-gap: 10px;
   font-size: 0.88rem;
   position: relative;
-  padding: 5px;
+  padding: 5px 15px;
   border: 1px solid hsla(243, 100%, 93%, 0.153);
   border-radius: 5px;
   background-color: hsla(243, 100%, 93%, 0.027);
