@@ -7,7 +7,7 @@
       <div class="citation">
         <p style="font-style: italic">Cinema is truth 24 frames per second.</p>
       </div>
-      <NuxtLink to="/search" class="search"
+      <NuxtLink to="/search" class="search" v-if="!route.meta.hideSearch"
         ><ClientOnly
           ><span class="search-icon"
             ><font-awesome-icon
@@ -20,9 +20,13 @@
     <slot></slot>
   </main>
   <client-only>
-    <Footer />
+    <Footer v-if="!route.meta.hideFooter" />
   </client-only>
 </template>
+
+<script setup>
+const route = useRoute();
+</script>
 
 <style scoped>
 header {

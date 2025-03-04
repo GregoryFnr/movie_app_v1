@@ -1,9 +1,6 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="title-section">
-        <h2>Search</h2>
-      </div>
       <div class="search">
         <div class="search-icon">
           <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
@@ -88,6 +85,11 @@
 </template>
 
 <script setup>
+definePageMeta({
+  hideFooter: true,
+  hideSearch: true,
+});
+
 const route = useRoute();
 const router = useRouter();
 
@@ -96,7 +98,7 @@ const movies = ref([]);
 const loading = ref(false);
 const error = ref(null);
 
-const debouncedSearchInput = refDebounced(searchInput, 700);
+const debouncedSearchInput = refDebounced(searchInput, 500);
 
 const fetchMovies = async () => {
   if (!debouncedSearchInput.value) {
@@ -141,9 +143,9 @@ onMounted(() => {
 .section {
   margin: 10px auto;
 }
+
 .container {
   width: 100%;
-  padding: 20px;
 }
 
 .title-section {
@@ -180,12 +182,15 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #fff;
   background-color: inherit;
   padding: 10px;
-  border-radius: 5px;
-  transition: all 0.2s ease;
+}
+
+.card {
+  width: auto;
+  min-height: 0;
 }
 
 .movies-grid {
@@ -215,5 +220,49 @@ onMounted(() => {
 
 .loader span {
   font-size: 0.88rem;
+}
+
+/* BREAKPOINTS */
+
+@media (max-width: 1200px) {
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    height: 100%;
+  }
+  .search-bar {
+    font-size: 1.8rem;
+  }
+  .search-icon {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    height: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3px;
+    row-gap: 6px;
+    height: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .search-bar {
+    font-size: 1.3rem;
+  }
+  .search-icon {
+    font-size: 1.3rem;
+  }
 }
 </style>
