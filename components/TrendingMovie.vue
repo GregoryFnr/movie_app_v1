@@ -33,17 +33,15 @@
         </div>
       </div>
     </NuxtLink>
-    <Transition name="fadeUp">
-      <TrailerModal
-        v-if="showModal"
-        :showModal="showModal"
-        @close="closeModal"
-      />
-    </Transition>
   </section>
 </template>
 
 <script setup>
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/vue";
+
 const { data: movie } = await useFetch("/api/movies/trending-movie");
 const showModal = ref(false);
 
