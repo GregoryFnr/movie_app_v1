@@ -20,7 +20,7 @@
           </div>
         </div>
         <p class="overview-top">{{ overview }}</p>
-        <button @click="openModal" class="btn-trailer">
+        <button v-if="trailerKey" @click="openModal" class="btn-trailer">
           Watch Trailer
           <ClientOnly>
             <font-awesome-icon
@@ -41,6 +41,7 @@
       <TrailerModal
         v-if="showModal"
         :showModal="showModal"
+        :trailerKey="trailerKey"
         @close="closeModal"
       />
     </Transition>
@@ -138,6 +139,9 @@ const props = defineProps([
   "budget",
 ]);
 
+const route = useRoute();
+const movieid = route.params.id;
+
 const isClient = ref(false);
 
 onMounted(() => {
@@ -154,15 +158,26 @@ function formatDuration(minutes) {
   return `${hours}h${remainingMinutes.toString().padStart(2, "0")}`;
 }
 
+const trailerKey = ref(null);
+
 const showModal = ref(false);
 
 function openModal() {
   showModal.value = true;
 }
-
 function closeModal() {
   showModal.value = false;
 }
+
+onMounted(async () => {
+  const { data } = await useFetch(`/api/movies/${movieid}/trailer`);
+  console.log(data.value);
+  if (data.value) {
+    trailerKey.value = data.value.key;
+  } else {
+    console.log("No trailer found");
+  }
+});
 </script>
 
 <style scoped>

@@ -12,21 +12,9 @@
 </template>
 
 <script setup>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-library.add(fas, fab, far);
-
-const route = useRoute();
-const movieid = route.params.id;
-
-const trailerKey = ref(null);
-
 defineProps({
   showModal: Boolean,
+  trailerKey: String,
 });
 
 const emit = defineEmits(["close"]);
@@ -34,16 +22,6 @@ const emit = defineEmits(["close"]);
 function close() {
   emit("close");
 }
-
-onMounted(async () => {
-  const { data } = await useFetch(`/api/movies/${movieid}/trailer`);
-  //console.log("API response", data.value);
-  if (data.value) {
-    trailerKey.value = data.value.key;
-  } else {
-    console.log("No trailer found");
-  }
-});
 </script>
 
 <style scoped>
