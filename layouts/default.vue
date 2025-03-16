@@ -2,7 +2,7 @@
   <header>
     <div class="navbar">
       <NuxtLink to="/" class="logo">
-        <img src="/public/logo-cinema.png" alt="Logo" />
+        <img src="/public/logo.png" alt="Logo" />
       </NuxtLink>
       <div class="citation">
         <p style="font-style: italic">Cinema is truth 24 frames per second.</p>
@@ -49,12 +49,12 @@ header {
 .logo {
   display: block;
   position: relative;
-  width: 100px;
+  width: 200px;
   height: 50px;
 }
 
 .logo img {
-  max-width: 100px;
+  max-width: 200px;
   height: 50px;
 }
 
