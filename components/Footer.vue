@@ -1,6 +1,5 @@
 <template>
   <footer>
-    <!--<div class="background-blur-color-footer"></div>-->
     <div class="footer-container">
       <div class="footer-contact">
         <h2>Follow me on</h2>
