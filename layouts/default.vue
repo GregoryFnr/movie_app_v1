@@ -47,15 +47,14 @@ header {
 }
 
 .logo {
-  display: block;
+  display: flex;
   position: relative;
-  width: 200px;
+  max-width: 200px;
   height: 50px;
 }
 
 .logo img {
-  max-width: 200px;
-  height: 50px;
+  width: 100%;
 }
 
 .citation {
@@ -93,7 +92,11 @@ header {
     display: none;
   }
   .navbar {
-    justify-content: center;
+    justify-content: space-evenly;
+  }
+  .search {
+    padding: 5px 10px;
+    font-size: 0.78rem;
   }
 }
 @media (max-width: 480px) {
@@ -106,9 +109,6 @@ header {
   }
   .logo img {
     height: 35px;
-  }
-  .navbar {
-    justify-content: center;
   }
 }
 </style>
