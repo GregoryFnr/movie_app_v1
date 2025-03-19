@@ -15,11 +15,6 @@
                 ><font-awesome-icon :icon="['fab', 'linkedin']"
               /></a>
             </li>
-            <li>
-              <a href="" target="_blank"
-                ><font-awesome-icon :icon="['fab', 'x-twitter']"
-              /></a>
-            </li>
           </ul>
         </div>
       </div>
@@ -70,7 +65,6 @@ footer {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 35px;
 }
 
 .contact-logo ul li {
@@ -146,9 +140,6 @@ footer {
   .contact-logo ul li a {
     font-size: 1.3rem;
   }
-  .contact-logo ul {
-    gap: 20px;
-  }
   .footer-contact h2 {
     margin-bottom: 4px;
   }
@@ -164,9 +155,6 @@ footer {
   }
   .contact-logo ul li a {
     font-size: 1.3rem;
-  }
-  .contact-logo ul {
-    gap: 20px;
   }
   .footer-contact h2 {
     margin-bottom: 4px;
@@ -186,7 +174,7 @@ footer {
     font-size: 1.3rem;
   }
   .contact-logo ul {
-    gap: 20px;
+    gap: 5px;
   }
   .footer-contact h2 {
     margin-bottom: 4px;
