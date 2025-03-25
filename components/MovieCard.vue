@@ -46,6 +46,12 @@ const props = defineProps(["movieid", "stars", "reviews", "title", "poster"]);
   animation-range-end: contain 50%;
 }
 
+.card:hover {
+  border: 1px solid var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px 0 #0000005f;
+}
+
 @keyframes reveal {
   from {
     opacity: 0.2;
@@ -63,12 +69,6 @@ const props = defineProps(["movieid", "stars", "reviews", "title", "poster"]);
 </style>
 
 <style>
-.card:hover {
-  border: 1px solid var(--primary);
-  transform: translateY(-3px);
-  box-shadow: 0 0 10px 0 #0000005f;
-}
-
 .card-container {
   width: 100%;
   display: block;
