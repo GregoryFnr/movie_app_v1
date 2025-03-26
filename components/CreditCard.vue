@@ -66,9 +66,8 @@ defineProps(["picture", "name", "character"]);
 
 .poster-film-else img {
   width: 100%;
-  height: auto;
   border-radius: 5px;
-  min-height: 100%;
+  height: 100%;
 }
 
 .info-film {

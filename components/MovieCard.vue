@@ -2,11 +2,14 @@
   <div class="card">
     <NuxtLink :to="`movies/${movieid}`">
       <div class="card-container">
-        <div class="poster-film">
+        <div class="poster-film" v-if="poster">
           <img
             :src="`https://image.tmdb.org/t/p/w300/` + poster"
             alt="Poster film"
           />
+        </div>
+        <div class="poster-film-else" v-else>
+          <img src="/public/img-placeholder.png" alt="Poster film" />
         </div>
         <div class="info-film">
           <h3>
@@ -80,6 +83,17 @@ const props = defineProps(["movieid", "stars", "reviews", "title", "poster"]);
 }
 
 .poster-film img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.poster-film-else {
+  width: 100%;
+  height: 100%;
+}
+
+.poster-film-else img {
   width: 100%;
   height: auto;
   border-radius: 5px;
