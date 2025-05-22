@@ -12,7 +12,7 @@
   </section>
   <TrendingMovie />
   <Transition name="fadeInX" appear>
-    <section class="section" style="margin: 25px auto">
+    <section class="section" style="margin: 0 auto">
       <div class="container-card-section">
         <div class="title-section">
           <h2>Upcoming movies</h2>
