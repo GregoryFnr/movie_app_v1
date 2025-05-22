@@ -48,6 +48,7 @@
       </div>
     </section>
   </Transition>
+  <TopRated />
 </template>
 
 <script setup>
