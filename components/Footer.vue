@@ -56,7 +56,7 @@ footer {
 }
 
 .footer-contact h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -83,7 +83,7 @@ footer {
 .contact-logo ul li,
 .contact-logo ul li a {
   color: #fff;
-  font-size: 1.88rem;
+  font-size: 1.5rem;
   transition: transform 0.2s ease;
 }
 
@@ -135,7 +135,7 @@ footer {
     right: calc(30% - 200px);
   }
   .footer-contact h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   .contact-logo ul li a {
     font-size: 1.3rem;
@@ -151,10 +151,10 @@ footer {
     right: calc(50% - 200px);
   }
   .footer-contact h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .contact-logo ul li a {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .footer-contact h2 {
     margin-bottom: 4px;
@@ -168,10 +168,10 @@ footer {
     filter: blur(20vw);
   }
   .footer-contact h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .contact-logo ul li a {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .contact-logo ul {
     gap: 5px;
