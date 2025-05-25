@@ -1,9 +1,38 @@
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from "vue";
+import SortSelect from "~/components/SortSelect.vue";
 
 const movies = ref([]);
 const page = ref(1);
 const loading = ref(false);
+const selectedGenre = ref("");
+
+const genreMap = {
+  Action: 28,
+  Adventure: 12,
+  Animation: 16,
+  Comedy: 35,
+  Crime: 80,
+  Documentary: 99,
+  Drama: 18,
+  Family: 10751,
+  History: 36,
+  Horror: 27,
+  Music: 10402,
+  Mystery: 9648,
+  Romance: 10749,
+  "Science Fiction": 878,
+  "TV Movie": 10770,
+  Thriller: 53,
+  War: 10752,
+  Western: 37,
+};
+
+const filteredMovies = computed(() => {
+  if (!selectedGenre.value) return movies.value;
+  return movies.value.filter((movie) =>
+    movie.genre_ids.includes(genreMap[selectedGenre.value])
+  );
+});
 
 const fetchMovies = async () => {
   if (loading.value) return;
@@ -45,18 +74,17 @@ onBeforeUnmount(() => {
   <section class="section">
     <div class="upcoming-container">
       <h1 class="title-upcoming">Top rated movies</h1>
+      <SortSelect v-model="selectedGenre" />
       <div class="movies-grid">
-        <TransitionGroup name="fadeInX" appear>
-          <MovieCard
-            v-for="movie in movies"
-            :key="movie.id"
-            :movieid="movie.id"
-            :title="movie.title"
-            :reviews="movie.vote_count"
-            :poster="movie.poster_path"
-            :stars="movie.vote_average"
-          />
-        </TransitionGroup>
+        <MovieCard
+          v-for="movie in filteredMovies"
+          :key="movie.id"
+          :movieid="movie.id"
+          :title="movie.title"
+          :reviews="movie.vote_count"
+          :poster="movie.poster_path"
+          :stars="movie.vote_average"
+        />
       </div>
       <div v-if="loading" class="loader">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">

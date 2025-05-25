@@ -1,19 +1,17 @@
 <template>
   <section class="section">
-    <div class="upcoming-container">
-      <h1 class="title-upcoming">Upcoming Movies</h1>
+    <div class="section-container">
+      <h1 class="title-section">Upcoming Movies</h1>
       <div class="movies-grid">
-        <TransitionGroup name="fadeInX" appear>
-          <MovieCard
-            v-for="movie in movies"
-            :key="movie.id"
-            :movieid="movie.id"
-            :title="movie.title"
-            :reviews="movie.vote_count"
-            :poster="movie.poster_path"
-            :stars="movie.vote_average"
-          />
-        </TransitionGroup>
+        <MovieCard
+          v-for="movie in movies"
+          :key="movie.id"
+          :movieid="movie.id"
+          :title="movie.title"
+          :reviews="movie.vote_count"
+          :poster="movie.poster_path"
+          :stars="movie.vote_average"
+        />
       </div>
       <div v-if="loading" class="loader">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -73,8 +71,6 @@
 </template>
 
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from "vue";
-
 const movies = ref([]);
 const page = ref(1);
 const loading = ref(false);
@@ -125,16 +121,8 @@ onBeforeUnmount(() => {
   padding: 20px;
 }
 
-.title-upcoming {
+.title-section {
   margin-bottom: 10px;
-}
-
-/*BREAKPOINTS*/
-
-@media (max-width: 640px) {
-  .title-upcoming {
-    font-size: 1.2rem;
-  }
 }
 </style>
 
