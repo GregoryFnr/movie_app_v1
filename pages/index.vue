@@ -11,43 +11,41 @@
     </div>
   </section>
   <TrendingMovie />
-  <Transition name="fadeInX" appear>
-    <section class="section" style="margin: 0 auto">
-      <div class="container-card-section">
-        <div class="title-section">
-          <h2>Upcoming movies</h2>
-        </div>
-        <div class="more">
-          <NuxtLink to="/upcoming" class="more-link">Discover more</NuxtLink>
-        </div>
-        <div class="card-section">
-          <swiper
-            :speed="600"
-            :modules="[Navigation]"
-            navigation
-            :breakpoints="{
-              640: { slidesPerView: 2, spaceBetween: 5, slidesPerGroup: 2 },
-              768: { slidesPerView: 3, spaceBetween: 10, slidesPerGroup: 3 },
-              1024: { slidesPerView: 5, spaceBetween: 10, slidesPerGroup: 5 },
-            }"
-          >
-            <swiper-slide v-for="movie in movies.results" :key="movie.id">
-              <MovieCard
-                :movieid="movie.id"
-                :title="movie.title"
-                :poster="movie.poster_path"
-                :stars="movie.vote_average"
-                :reviews="movie.vote_count"
-              />
-            </swiper-slide>
-          </swiper>
-        </div>
-        <div class="more-mobile">
-          <NuxtLink to="/upcoming" class="more-link">Discover more</NuxtLink>
-        </div>
+  <section class="section" style="margin: 0 auto">
+    <div class="container-card-section">
+      <div class="title-section">
+        <h2>Upcoming movies</h2>
       </div>
-    </section>
-  </Transition>
+      <div class="more">
+        <NuxtLink to="/upcoming" class="more-link">Discover more</NuxtLink>
+      </div>
+      <div class="card-section">
+        <swiper
+          :speed="600"
+          :modules="[Navigation]"
+          navigation
+          :breakpoints="{
+            640: { slidesPerView: 2, spaceBetween: 5, slidesPerGroup: 2 },
+            768: { slidesPerView: 3, spaceBetween: 10, slidesPerGroup: 3 },
+            1024: { slidesPerView: 5, spaceBetween: 10, slidesPerGroup: 5 },
+          }"
+        >
+          <swiper-slide v-for="movie in movies.results" :key="movie.id">
+            <MovieCard
+              :movieid="movie.id"
+              :title="movie.title"
+              :poster="movie.poster_path"
+              :stars="movie.vote_average"
+              :reviews="movie.vote_count"
+            />
+          </swiper-slide>
+        </swiper>
+      </div>
+      <div class="more-mobile">
+        <NuxtLink to="/upcoming" class="more-link">Discover more</NuxtLink>
+      </div>
+    </div>
+  </section>
   <TopRated />
 </template>
 
@@ -62,18 +60,6 @@ const { data: movies, error } = await useFetch(`/api/movies/`);
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-/*TRANSITIONS*/
-.fadeInX-enter-active,
-.fadeInX-leave-active {
-  transition: all 0.5s ease;
-}
-
-.fadeInX-enter-from,
-.fadeInX-leave-to {
-  opacity: 0;
-  transform: translateX(15px);
-}
 
 * {
   margin: 0;
