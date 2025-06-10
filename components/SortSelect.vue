@@ -32,7 +32,7 @@ const model = defineModel();
 .select-container {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   margin: 20px auto;
   gap: 1rem;
@@ -40,9 +40,29 @@ const model = defineModel();
 
 .genres-select {
   background-color: #000;
+  max-width: 200px;
   color: #fff;
   padding: 10px 15px;
   border-radius: 5px;
   text-align: start;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .select-container {
+    justify-content: center;
+  }
+
+  .genres-select {
+    max-width: 100%;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .genres-select {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
 }
 </style>
