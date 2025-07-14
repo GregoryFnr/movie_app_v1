@@ -3,8 +3,6 @@
     <NuxtLink :to="`movies/${movie.id}`">
       <div class="title-section">
         <h2>Suggestion of the month</h2>
-      </div>
-      <div class="more">
         <p class="more-link">More</p>
       </div>
       <div

@@ -42,6 +42,12 @@ const { data: credits, error } = await useFetch(
   padding: 10px;
 }
 
+.card:hover {
+  transform: none;
+  box-shadow: none;
+  border: 1px solid transparent;
+}
+
 .swiper-slide {
   height: 100%;
   display: flex;

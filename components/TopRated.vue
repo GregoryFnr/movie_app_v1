@@ -12,8 +12,6 @@ const { data: movies } = await useFetch("/api/movies/top-rated");
     <div class="container-card-section">
       <div class="title-section">
         <h2>Top rated movies</h2>
-      </div>
-      <div class="more">
         <NuxtLink to="/topRatedMovies" class="more-link"
           >Discover more</NuxtLink
         >

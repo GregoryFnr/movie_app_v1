@@ -23,10 +23,7 @@
         <button v-if="trailerKey" @click="openModal" class="btn-trailer">
           Watch Trailer
           <ClientOnly>
-            <font-awesome-icon
-              class="play-icon"
-              :icon="['far', 'circle-play']"
-            />
+            <font-awesome-icon class="play-icon" :icon="['fas', 'play']" />
           </ClientOnly>
         </button>
       </div>
@@ -48,9 +45,6 @@
   </section>
   <section class="section-color">
     <div class="section">
-      <div class="info-film">
-        <h2>More Info</h2>
-      </div>
       <div class="column-id">
         <div class="left">
           <img
@@ -271,17 +265,6 @@ onMounted(async () => {
   z-index: 10;
 }
 
-.info-film {
-  margin: 0 auto;
-  width: fit-content;
-  margin-bottom: 50px;
-}
-
-.info-film h2 {
-  font-weight: 500;
-  border-bottom: 1px solid #fff;
-}
-
 .column-id {
   display: flex;
   justify-content: center;
@@ -357,9 +340,8 @@ onMounted(async () => {
   font-size: 0.95rem;
   color: #fff;
   padding: 12px 55px;
-  /*border: 1px solid;*/
   border: none;
-  background-color: inherit;
+  background-color: hsla(243, 100%, 93%, 10%);
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -370,7 +352,7 @@ onMounted(async () => {
 }
 
 .btn-trailer:hover .play-icon {
-  transform: translateX(5px);
+  transform: translateX(2px);
 }
 
 .btn-trailer .play-icon {
@@ -422,10 +404,6 @@ onMounted(async () => {
     font-size: 0.83rem;
     margin-bottom: 5px;
   }
-  .info-film {
-    margin-bottom: 25px;
-  }
-
   .poster-film {
     width: 300px;
     height: 500px;
@@ -526,12 +504,6 @@ onMounted(async () => {
   }
   .section-color {
     padding: 10px 0;
-  }
-  .info-film {
-    margin-bottom: 15px;
-  }
-  .info-film h2 {
-    font-size: 1.3rem;
   }
 }
 </style>

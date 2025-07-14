@@ -15,8 +15,6 @@
     <div class="container-card-section">
       <div class="title-section">
         <h2>Upcoming movies</h2>
-      </div>
-      <div class="more">
         <NuxtLink to="/upcoming" class="more-link">Discover more</NuxtLink>
       </div>
       <div class="card-section">
@@ -133,13 +131,6 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.separator {
-  width: 15%;
-  height: 1px;
-  margin: 0 auto;
-  background-color: #98c1d9;
-}
-
 .calendar-title {
   font-size: 2rem;
   margin-bottom: 10px;
@@ -156,10 +147,11 @@ body {
   margin: 50px auto;
 }
 
-.more {
-  width: 100%;
-  margin-bottom: 10px;
-  text-align: end;
+.title-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
 }
 
 .more-mobile {
@@ -193,7 +185,7 @@ body {
 
 .swiper-button-prev,
 .swiper-button-next {
-  color: #fff;
+  color: #326ebd;
   transition: all 0.2s ease;
 }
 
@@ -284,9 +276,6 @@ body {
   .more-mobile {
     display: block;
   }
-  .more {
-    display: none;
-  }
   .container-card-section {
     margin: 0 auto;
   }
@@ -322,9 +311,6 @@ body {
   }
   .more-mobile {
     display: block;
-  }
-  .more {
-    display: none;
   }
 }
 </style>
