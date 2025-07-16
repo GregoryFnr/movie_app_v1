@@ -16,8 +16,9 @@
             {{ title }}
           </h3>
           <div class="bottom">
-            <p>
-              {{ reviews }} review<span :v-if="reviews.length >= 2">s</span>
+            <p v-if="reviews === 0">No reviews</p>
+            <p v-else>
+              {{ reviews }} review<span v-if="reviews !== 1">s</span>
             </p>
             <div class="stars">
               <StarsRate :value="stars" class="stars-card" />
