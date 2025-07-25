@@ -348,7 +348,7 @@ onMounted(async () => {
 }
 
 .btn-trailer:hover {
-  background-color: #333;
+  background-color: hsla(243, 100%, 93%, 10%);
 }
 
 .btn-trailer:hover .play-icon {
