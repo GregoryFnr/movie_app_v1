@@ -1,6 +1,4 @@
 <script setup>
-import SortSelect from "~/components/SortSelect.vue";
-
 const movies = ref([]);
 const page = ref(1);
 const loading = ref(false);
@@ -74,7 +72,16 @@ onBeforeUnmount(() => {
   <section class="section">
     <div class="upcoming-container">
       <h1 class="title-upcoming">Top rated movies</h1>
-      <SortSelect v-model="selectedGenre" />
+      <div class="filter-container">
+        <h2 class="title-filter">Filter by genre</h2>
+        <div class="filter-btn-container">
+          <div class="filter-btn">Action</div>
+          <div class="filter-btn">Adventure</div>
+          <div class="filter-btn">Science Fiction</div>
+          <div class="filter-btn">Comedy</div>
+        </div>
+      </div>
+      <!--<SortSelect v-model="selectedGenre" />-->
       <div class="movies-grid">
         <MovieCard
           v-for="movie in filteredMovies"
@@ -155,6 +162,55 @@ onBeforeUnmount(() => {
 
 .title-upcoming {
   margin-bottom: 10px;
+}
+
+.filter-container {
+  margin: 20px 0;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  color: #fff;
+}
+
+.title-filter {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #fff;
+}
+
+.filter-btn-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: row;
+  gap: 10px;
+  color: #fff;
+}
+
+.filter-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.88rem;
+  color: #fff;
+  padding: 10px 25px;
+  border: none;
+  background-color: hsla(243, 100%, 93%, 10%);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filter-btn:hover {
+  background-color: hsla(243, 100%, 93%, 0.224);
+}
+
+.filter-btn:active {
+  background-color: hsla(243, 100%, 93%, 0.224);
 }
 
 /*BREAKPOINTS*/
