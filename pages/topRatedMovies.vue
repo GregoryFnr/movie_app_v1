@@ -25,11 +25,18 @@ const genreMap = {
   Western: 37,
 };
 
+const filterByGenre = (genreName) => {
+  selectedGenre.value = genreName;
+};
+
+const resetFilter = () => {
+  selectedGenre.value = "";
+};
+
 const filteredMovies = computed(() => {
   if (!selectedGenre.value) return movies.value;
-  return movies.value.filter((movie) =>
-    movie.genre_ids.includes(genreMap[selectedGenre.value])
-  );
+  const genreId = genreMap[selectedGenre.value];
+  return movies.value.filter((movie) => movie.genre_ids.includes(genreId));
 });
 
 const fetchMovies = async () => {
@@ -75,13 +82,37 @@ onBeforeUnmount(() => {
       <div class="filter-container">
         <h2 class="title-filter">Filter by genre</h2>
         <div class="filter-btn-container">
-          <div class="filter-btn">Action</div>
-          <div class="filter-btn">Adventure</div>
-          <div class="filter-btn">Science Fiction</div>
-          <div class="filter-btn">Comedy</div>
+          <div
+            class="filter-btn"
+            :class="{ active: selectedGenre === name }"
+            @click="filterByGenre('Action')"
+          >
+            Action
+          </div>
+          <div
+            class="filter-btn"
+            :class="{ active: selectedGenre === name }"
+            @click="filterByGenre('Comedy')"
+          >
+            Comedy
+          </div>
+          <div
+            class="filter-btn"
+            :class="{ active: selectedGenre === name }"
+            @click="filterByGenre('Science Fiction')"
+          >
+            Science Fiction
+          </div>
+          <div class="filter-btn">Select genre</div>
+          <div
+            class="filter-btn"
+            :class="{ active: selectedGenre === '' }"
+            @click="resetFilter"
+          >
+            All genres
+          </div>
         </div>
       </div>
-      <!--<SortSelect v-model="selectedGenre" />-->
       <div class="movies-grid">
         <MovieCard
           v-for="movie in filteredMovies"
@@ -209,7 +240,7 @@ onBeforeUnmount(() => {
   background-color: hsla(243, 100%, 93%, 0.224);
 }
 
-.filter-btn:active {
+.filter-btn.active {
   background-color: hsla(243, 100%, 93%, 0.224);
 }
 
