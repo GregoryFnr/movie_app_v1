@@ -19,7 +19,6 @@
             {{ formatDuration(runtime) }}
           </div>
         </div>
-        <p class="overview-top">{{ overview }}</p>
         <button v-if="trailerKey" @click="openModal" class="btn-trailer">
           Watch Trailer
           <ClientOnly>
@@ -320,12 +319,6 @@ onMounted(async () => {
   color: #fff;
 }
 
-.overview-top {
-  font-size: 0.98rem;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
 .overview {
   font-size: 0.98rem;
   color: #fff;
@@ -428,9 +421,6 @@ onMounted(async () => {
     align-items: center;
     font-size: 0.83rem;
     color: #fff;
-  }
-  .overview-top {
-    display: none;
   }
 }
 
