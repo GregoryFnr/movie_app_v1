@@ -58,10 +58,18 @@ function close() {
 }
 
 .trailer {
-  width: 100%;
-  height: 100%;
+  width: 75%;
+  height: 75%;
   margin: 100px;
   border: none;
   overflow-y: none;
+}
+
+@media (max-width: 640px) {
+  .trailer {
+    width: 100%;
+    height: 50%;
+    margin: 50px;
+  }
 }
 </style>
