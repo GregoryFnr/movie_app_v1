@@ -178,13 +178,13 @@ onMounted(async () => {
 
 :global(.fadeUp-enter-active),
 :global(.fadeUp-leave-active) {
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 :global(.fadeUp-enter-from),
 :global(.fadeUp-leave-to) {
   opacity: 0;
-  transform: translateY(100px);
+  transform: translateY(50px);
 }
 
 .hero-film {
