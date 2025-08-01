@@ -28,8 +28,8 @@ function close() {
 .x-icon {
   color: #fff;
   position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
