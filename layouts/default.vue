@@ -75,16 +75,15 @@ header {
   font-size: 0.88rem;
   position: relative;
   padding: 5px 15px;
-  border: 1px solid hsla(243, 100%, 93%, 0.153);
   border-radius: 5px;
-  background-color: hsla(243, 100%, 93%, 0.027);
-  color: hsla(243, 100%, 93%, 0.753);
+  background-color: var(--bg-component);
+  color: #fff;
   text-decoration: none;
-  transition: background-color, border 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .search:hover {
-  border: 1px solid var(--primary);
+  background-color: var(--bg-component-hover);
 }
 
 @media (max-width: 640px) {

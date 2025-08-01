@@ -77,7 +77,7 @@ footer {
 }
 
 .contact-logo ul li svg:hover {
-  background-color: hsla(243, 100%, 93%, 10%);
+  background-color: var(--bg-component-hover);
 }
 
 .contact-logo ul li,

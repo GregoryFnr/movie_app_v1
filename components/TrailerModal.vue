@@ -36,10 +36,12 @@ function close() {
   top: 0;
   right: 0;
   cursor: pointer;
+  background-color: var(--bg-component);
+  transition: background-color 0.2s ease;
 }
 
 .x-icon:hover {
-  background-color: hsla(243, 100%, 93%, 10%);
+  background-color: var(--bg-component-hover);
 }
 
 .trailer-modal {

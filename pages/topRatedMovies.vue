@@ -39,6 +39,16 @@ const filteredMovies = computed(() => {
   return movies.value.filter((movie) => movie.genre_ids.includes(genreId));
 });
 
+const showGenreModal = ref(false);
+
+const openGenreModal = () => {
+  showGenreModal.value = true;
+};
+
+const closeGenreModal = () => {
+  showGenreModal.value = false;
+};
+
 const fetchMovies = async () => {
   if (loading.value) return;
   loading.value = true;
@@ -82,35 +92,43 @@ onBeforeUnmount(() => {
       <div class="filter-container">
         <h2 class="title-filter">Filter by genre</h2>
         <div class="filter-btn-container">
-          <div
+          <button
+            type="button"
             class="filter-btn"
-            :class="{ active: selectedGenre === name }"
+            :class="{ active: selectedGenre === 'Action' }"
             @click="filterByGenre('Action')"
           >
             Action
-          </div>
-          <div
+          </button>
+          <button
+            type="button"
             class="filter-btn"
-            :class="{ active: selectedGenre === name }"
-            @click="filterByGenre('Comedy')"
+            :class="{ active: selectedGenre === 'Adventure' }"
+            @click="filterByGenre('Adventure')"
           >
-            Comedy
-          </div>
-          <div
+            Adventure
+          </button>
+          <button
+            type="button"
             class="filter-btn"
-            :class="{ active: selectedGenre === name }"
-            @click="filterByGenre('Science Fiction')"
+            :class="{ active: selectedGenre === 'Horror' }"
+            @click="filterByGenre('Horror')"
           >
-            Science Fiction
-          </div>
-          <div class="filter-btn">Select genre</div>
-          <div
-            class="filter-btn"
-            :class="{ active: selectedGenre === '' }"
+            Horror
+          </button>
+          <button type="button" class="filter-btn" @click="openGenreModal">
+            Select genre
+          </button>
+          <!-- Bouton dynamique si un genre est sélectionné -->
+          <button
+            type="button"
+            v-if="selectedGenre"
+            class="filter-btn selected-filter"
             @click="resetFilter"
           >
-            All genres
-          </div>
+            {{ selectedGenre }} <font-awesome-icon :icon="['fas', 'xmark']" />
+          </button>
+          <button class="filter-btn-reset" @click="resetFilter">Reset</button>
         </div>
       </div>
       <div class="movies-grid">
@@ -178,10 +196,54 @@ onBeforeUnmount(() => {
         <span>Loading...</span>
       </div>
     </div>
+    <transition name="fadeUp">
+      <!-- Genre Modal -->
+      <div
+        v-if="showGenreModal"
+        class="modal-overlay"
+        @click.self="closeGenreModal"
+      >
+        <div class="modal-content">
+          <h3>Select a genre</h3>
+          <div class="modal-genres">
+            <button
+              type="button"
+              v-for="(id, name) in genreMap"
+              :key="id"
+              class="filter-btn"
+              @click="
+                filterByGenre(name);
+                closeGenreModal();
+              "
+            >
+              {{ name }}
+            </button>
+          </div>
+          <font-awesome-icon
+            :icon="['fas', 'xmark']"
+            class="close-btn"
+            @click="closeGenreModal"
+          />
+        </div>
+      </div>
+    </transition>
   </section>
 </template>
 
 <style scoped>
+/*TRANSITIONS*/
+
+:global(.fadeUp-enter-active),
+:global(.fadeUp-leave-active) {
+  transition: all 0.3s ease;
+}
+
+:global(.fadeUp-enter-from),
+:global(.fadeUp-leave-to) {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
 .card {
   width: auto;
   min-height: 0;
@@ -223,6 +285,22 @@ onBeforeUnmount(() => {
 
 .filter-btn {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #fff;
+  padding: 10px 25px;
+  border: none;
+  background-color: var(--bg-component);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filter-btn-reset {
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
@@ -230,18 +308,84 @@ onBeforeUnmount(() => {
   color: #fff;
   padding: 10px 25px;
   border: none;
-  background-color: hsla(243, 100%, 93%, 10%);
+  background-color: var(--accent);
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .filter-btn:hover {
-  background-color: hsla(243, 100%, 93%, 0.224);
+  background-color: var(--bg-component-hover);
+}
+
+.filter-btn-reset:hover {
+  background-color: var(--accent-hover);
+}
+
+.filter-btn-reset:active {
+  transition: none;
+  background-color: #c85f45b9;
 }
 
 .filter-btn.active {
-  background-color: hsla(243, 100%, 93%, 0.224);
+  background-color: var(--bg-component-hover);
+}
+
+.selected-filter {
+  background-color: var(--bg-component-hover);
+  color: white;
+  border: none;
+}
+
+/*MODAL*/
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal-content {
+  position: absolute;
+  background: #111;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 350px;
+  width: 90%;
+}
+
+.modal-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.close-btn {
+  background: var(--bg-component);
+  color: #fff;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: var(--bg-component-hover);
 }
 
 /*BREAKPOINTS*/

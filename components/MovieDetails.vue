@@ -258,7 +258,7 @@ onMounted(async () => {
 
 .section-color {
   width: 100%;
-  background-color: hsla(243, 100%, 93%, 10%);
+  background-color: var(--bg-component);
   padding: 20px 0;
   position: relative;
   z-index: 10;
@@ -334,14 +334,14 @@ onMounted(async () => {
   color: #fff;
   padding: 12px 55px;
   border: none;
-  background-color: hsla(243, 100%, 93%, 10%);
+  background-color: var(--bg-component);
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .btn-trailer:hover {
-  background-color: hsla(243, 100%, 93%, 0.224);
+  background-color: var(--bg-component-hover);
 }
 
 .btn-trailer:hover .play-icon {
@@ -376,7 +376,7 @@ onMounted(async () => {
 
 .card-genres-film,
 .card-origins-film {
-  background-color: hsla(243, 100%, 93%, 10%);
+  background-color: var(--bg-component-hover);
   width: auto;
   padding: 5px 12px;
   border-radius: 5px;

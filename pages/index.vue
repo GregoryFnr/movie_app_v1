@@ -73,6 +73,9 @@ const { data: movies, error } = await useFetch(`/api/movies/`);
   --primary: #326ebd;
   --secondary: #dddbff;
   --accent: #ee6c4d;
+  --accent-hover: #c85f45;
+  --bg-component: hsla(243, 100%, 93%, 10%);
+  --bg-component-hover: hsla(243, 100%, 93%, 0.224);
 }
 
 p,
@@ -140,7 +143,7 @@ body {
 /*CARD SECTION*/
 
 .container-card-section {
-  background-color: hsla(243, 100%, 93%, 10%);
+  background-color: hsla(243, 100%, 93%, 0.088);
   padding: 25px;
   width: 100%;
   border-radius: 5px;
