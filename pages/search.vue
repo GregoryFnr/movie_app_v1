@@ -163,26 +163,27 @@ onMounted(() => {
 }
 
 .search-bar {
-  font-size: 2rem;
+  font-size: 1.5rem;
   width: 100%;
   padding: 10px;
-  border: 1px solid hsla(243, 100%, 93%, 0.153);
+  border: none;
+  background-color: var(--bg-component);
   border-radius: 5px;
   color: #fff;
-  transition: all 0.2s ease;
-  background-color: inherit;
+  transition: all 0.4s ease;
 }
 
 .search-bar:focus {
   outline: none;
-  border: var(--primary) 1px solid;
+  box-shadow: 0 20px 120px -10px var(--accent);
+  background-color: inherit;
 }
 
 .search-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: #fff;
   background-color: inherit;
   padding: 10px;
