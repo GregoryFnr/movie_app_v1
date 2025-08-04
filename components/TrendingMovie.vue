@@ -212,7 +212,7 @@ function closeModal() {
     font-size: 0.78rem;
   }
   .stars {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   .trending-card {
     margin-top: 5px;

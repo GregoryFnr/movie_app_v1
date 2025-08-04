@@ -30,6 +30,7 @@ defineProps(["picture", "name", "character"]);
 .card {
   display: block;
   position: relative;
+  padding: 10px;
   width: auto;
   border: 1px solid transparent;
   background-color: inherit;
@@ -46,7 +47,6 @@ defineProps(["picture", "name", "character"]);
 .card-container {
   width: 100%;
   display: block;
-  padding: 10px;
 }
 
 .poster-film {
@@ -103,6 +103,12 @@ defineProps(["picture", "name", "character"]);
 @media (max-width: 768px) {
   .card {
     width: 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 5px;
   }
 }
 

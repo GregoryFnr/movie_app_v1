@@ -58,4 +58,16 @@ const style = computed(() => ({
     width: 80px;
   }
 }
+
+@media (max-width: 480px) {
+  .stars {
+    width: 65px;
+  }
+  .stars-empty {
+    width: 65px;
+  }
+  .stars-filled {
+    width: 65px;
+  }
+}
 </style>

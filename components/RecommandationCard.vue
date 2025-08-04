@@ -64,6 +64,15 @@ const props = defineProps(["movieid", "stars", "title", "date", "poster"]);
   }
 }
 
+@media (max-width: 640px) {
+  .card {
+    padding: 5px;
+  }
+  .info-film h3 {
+    display: none;
+  }
+}
+
 .info-film .bottom {
   display: flex;
   justify-content: flex-start;
