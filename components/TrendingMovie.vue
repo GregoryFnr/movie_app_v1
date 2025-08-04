@@ -1,36 +1,38 @@
 <template>
-  <section class="section trending-movie">
-    <NuxtLink :to="`movies/${movie.id}`">
-      <div class="title-section">
-        <h2>Suggestion of the month</h2>
-        <p class="more-link">More</p>
-      </div>
-      <div
-        class="trending-movie-container"
-        :style="{
-          backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'top',
-        }"
-      >
-        <div class="title-trending-movie">
-          <div class="title">
-            <h2>{{ movie.title }}</h2>
-          </div>
-          <div class="row">
-            <StarsRate :value="movie.vote_average" />
-            <div class="reviews">{{ movie.vote_count }} reviews</div>
-            <div class="date">Released on {{ movie.release_date }}</div>
-            <div class="trending-card">
-              <p class="font-effect">Trending</p>
+  <section class="section">
+    <section class="trending-movie">
+      <NuxtLink :to="`movies/${movie.id}`">
+        <div class="title-section">
+          <h2>Suggestion of the month</h2>
+          <p class="more-link">More</p>
+        </div>
+        <div
+          class="trending-movie-container"
+          :style="{
+            backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'top',
+          }"
+        >
+          <div class="title-trending-movie">
+            <div class="title">
+              <h2>{{ movie.title }}</h2>
+            </div>
+            <div class="row">
+              <StarsRate :value="movie.vote_average" />
+              <div class="reviews">{{ movie.vote_count }} reviews</div>
+              <div class="date">Released on {{ movie.release_date }}</div>
+              <div class="trending-card">
+                <p class="font-effect">Trending</p>
+              </div>
+            </div>
+            <div class="overview">
+              <p>{{ movie.overview.slice(0, 300) }}...</p>
             </div>
           </div>
-          <div class="overview">
-            <p>{{ movie.overview.slice(0, 300) }}...</p>
-          </div>
         </div>
-      </div>
-    </NuxtLink>
+      </NuxtLink>
+    </section>
   </section>
 </template>
 
@@ -54,12 +56,12 @@ function closeModal() {
 
 <style scoped>
 .section {
-  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .trending-movie {
   background-color: hsla(243, 100%, 93%, 0.027);
-  padding: 25px;
+  padding: 15px;
   border-radius: 5px;
 }
 

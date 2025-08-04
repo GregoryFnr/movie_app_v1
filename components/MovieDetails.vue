@@ -195,7 +195,7 @@ onMounted(async () => {
 
 .section {
   margin: 25px auto;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
 .banner-columns {
@@ -449,7 +449,7 @@ onMounted(async () => {
     margin: 0 auto;
   }
   .storyline {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   .banner-columns .left .title {
     margin-bottom: 5px;

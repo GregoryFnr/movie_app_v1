@@ -46,4 +46,16 @@ const style = computed(() => ({
   position: absolute;
   inset: 0;
 }
+
+@media (max-width: 640px) {
+  .stars {
+    width: 80px;
+  }
+  .stars-empty {
+    width: 80px;
+  }
+  .stars-filled {
+    width: 80px;
+  }
+}
 </style>

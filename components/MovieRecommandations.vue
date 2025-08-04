@@ -5,8 +5,10 @@
       :modules="[Navigation]"
       navigation
       :breakpoints="{
-        640: { slidesPerView: 2, spaceBetween: 5, slidesPerGroup: 2 },
-        768: { slidesPerView: 3, spaceBetween: 10, slidesPerGroup: 3 },
+        360: { slidesPerView: 3, spaceBetween: 2, slidesPerGroup: 2 },
+        480: { slidesPerView: 3, spaceBetween: 3, slidesPerGroup: 2 },
+        640: { slidesPerView: 3, spaceBetween: 5, slidesPerGroup: 2 },
+        768: { slidesPerView: 4, spaceBetween: 10, slidesPerGroup: 3 },
         1024: { slidesPerView: 5, spaceBetween: 10, slidesPerGroup: 5 },
       }"
     >

@@ -70,6 +70,15 @@ const props = defineProps(["movieid", "stars", "reviews", "title", "poster"]);
     width: 250px;
   }
 }
+
+@media (max-width: 640px) {
+  .info-film h3 {
+    display: none;
+  }
+  .card {
+    padding: 5px;
+  }
+}
 </style>
 
 <style>
@@ -128,16 +137,13 @@ const props = defineProps(["movieid", "stars", "reviews", "title", "poster"]);
   bottom: 0;
 }
 
-.stars-card .stars-empty {
-  width: 100px;
-}
-
 @media (max-width: 640px) {
   .card .stars {
     margin-bottom: 10px;
   }
-}
-@media (max-width: 480px) {
+  .card {
+    padding: 5px;
+  }
   .card .card-container .info-film .bottom p {
     display: none;
   }
@@ -145,6 +151,8 @@ const props = defineProps(["movieid", "stars", "reviews", "title", "poster"]);
     flex-direction: row;
     justify-content: left;
   }
+}
+@media (max-width: 480px) {
   .info-film h3 {
     font-size: 0.88rem;
   }

@@ -22,7 +22,7 @@ const { data: movies } = await useFetch("/api/movies/top-rated");
           :modules="[Navigation]"
           navigation
           :breakpoints="{
-            640: { slidesPerView: 2, spaceBetween: 5, slidesPerGroup: 2 },
+            360: { slidesPerView: 3, spaceBetween: 3, slidesPerGroup: 2 },
             768: { slidesPerView: 3, spaceBetween: 10, slidesPerGroup: 3 },
             1024: { slidesPerView: 5, spaceBetween: 10, slidesPerGroup: 5 },
           }"

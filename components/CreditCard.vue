@@ -76,7 +76,7 @@ defineProps(["picture", "name", "character"]);
   line-height: 1.2rem;
 }
 
-.info-film p {
+.character-name {
   font-size: 0.88rem;
 }
 
@@ -113,7 +113,7 @@ defineProps(["picture", "name", "character"]);
   .info-film h3 {
     font-size: 0.78rem;
   }
-  .info-film p {
+  .character-name {
     font-size: 0.68rem;
   }
 }

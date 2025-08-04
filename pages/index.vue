@@ -23,7 +23,7 @@
           :modules="[Navigation]"
           navigation
           :breakpoints="{
-            640: { slidesPerView: 2, spaceBetween: 5, slidesPerGroup: 2 },
+            360: { slidesPerView: 3, spaceBetween: 3, slidesPerGroup: 2 },
             768: { slidesPerView: 3, spaceBetween: 10, slidesPerGroup: 3 },
             1024: { slidesPerView: 5, spaceBetween: 10, slidesPerGroup: 5 },
           }"
@@ -76,6 +76,7 @@ const { data: movies, error } = await useFetch(`/api/movies/`);
   --accent-hover: #c85f45;
   --bg-component: hsla(243, 100%, 93%, 10%);
   --bg-component-hover: hsla(243, 100%, 93%, 0.224);
+  --size-swiper-prev-next: 30px;
 }
 
 p,
@@ -144,7 +145,7 @@ body {
 
 .container-card-section {
   background-color: hsla(243, 100%, 93%, 0.088);
-  padding: 25px;
+  padding: 15px;
   width: 100%;
   border-radius: 5px;
   margin: 50px auto;
@@ -269,12 +270,18 @@ body {
     right: calc(50% - 200px);
     filter: blur(19vw);
   }
+  .title-section {
+    margin-bottom: 15px;
+  }
   .title-section h2 {
     font-size: 1.2rem;
   }
   .main-title h1 {
     font-size: 2.4rem;
     line-height: 1.95rem;
+  }
+  .title-section .more-link {
+    display: none;
   }
   .more-mobile {
     display: block;
@@ -298,9 +305,6 @@ body {
     width: 300px;
     right: calc(50% - 200px);
     filter: blur(19vw);
-  }
-  .title-section h2 {
-    font-size: 1rem;
   }
   .more-link {
     font-size: 0.88rem;
