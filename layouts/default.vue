@@ -100,8 +100,8 @@ header {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 75px;
-  height: 75px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   position: fixed;
   z-index: 100;
@@ -118,19 +118,14 @@ header {
 }
 
 .responsive-search .search-icon {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 
 @media (max-width: 640px) {
   .navbar .citation {
     display: none;
   }
-  .navbar {
-    justify-content: space-evenly;
-  }
   .search {
-    padding: 5px 10px;
-    font-size: 0.78rem;
     display: none;
   }
   .responsive-search {
