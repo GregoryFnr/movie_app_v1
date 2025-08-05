@@ -125,6 +125,9 @@ header {
   .navbar .citation {
     display: none;
   }
+  .navbar {
+    justify-content: center;
+  }
   .search {
     display: none;
   }
@@ -137,7 +140,7 @@ header {
     display: none;
   }
   .logo {
-    width: auto;
+    max-width: 150px;
     height: 35px;
   }
   .logo img {

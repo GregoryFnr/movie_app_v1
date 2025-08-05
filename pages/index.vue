@@ -11,7 +11,7 @@
     </div>
   </section>
   <TrendingMovie />
-  <section class="section" style="margin: 0 auto">
+  <section class="section" style="margin-bottom: 20px">
     <div class="container-card-section">
       <div class="title-section">
         <h2>Upcoming movies</h2>
