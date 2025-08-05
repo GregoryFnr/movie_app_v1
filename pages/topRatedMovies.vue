@@ -276,6 +276,7 @@ onBeforeUnmount(() => {
 .filter-btn-container {
   margin-bottom: 20px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: left;
   flex-direction: row;
@@ -393,6 +394,10 @@ onBeforeUnmount(() => {
 @media (max-width: 640px) {
   .title-upcoming {
     font-size: 1.2rem;
+  }
+  .filter-btn-container {
+    gap: 7px;
+    margin-bottom: 0;
   }
 }
 </style>

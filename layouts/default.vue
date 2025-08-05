@@ -19,6 +19,16 @@
   <main>
     <slot></slot>
   </main>
+  <NuxtLink
+    to="/search"
+    class="responsive-search"
+    v-if="!route.meta.hideSearch"
+  >
+    <ClientOnly
+      ><span class="search-icon"
+        ><font-awesome-icon :icon="['fas', 'magnifying-glass']" /></span
+    ></ClientOnly>
+  </NuxtLink>
   <client-only>
     <Footer v-if="!route.meta.hideFooter" />
   </client-only>
@@ -86,6 +96,31 @@ header {
   background-color: var(--bg-component-hover);
 }
 
+.responsive-search {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 100;
+  bottom: 15px;
+  left: 15px;
+  background-color: #000;
+  color: var(--primary);
+  padding: 10px;
+  text-decoration: none;
+}
+
+.responsive-search:active {
+  background-color: var(--bg-component-hover);
+}
+
+.responsive-search .search-icon {
+  font-size: 1.7rem;
+}
+
 @media (max-width: 640px) {
   .navbar .citation {
     display: none;
@@ -96,6 +131,10 @@ header {
   .search {
     padding: 5px 10px;
     font-size: 0.78rem;
+    display: none;
+  }
+  .responsive-search {
+    display: flex;
   }
 }
 @media (max-width: 480px) {
