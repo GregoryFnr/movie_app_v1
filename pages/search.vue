@@ -166,7 +166,7 @@ onMounted(() => {
   font-size: 1.5rem;
   width: 100%;
   padding: 10px;
-  border: none;
+  border: 1px solid transparent;
   background-color: var(--bg-component);
   border-radius: 5px;
   color: #fff;
@@ -175,8 +175,7 @@ onMounted(() => {
 
 .search-bar:focus {
   outline: none;
-  box-shadow: 0 20px 120px -10px var(--accent);
-  background-color: inherit;
+  border-color: var(--primary);
 }
 
 .search-icon {
