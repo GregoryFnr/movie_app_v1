@@ -2,7 +2,9 @@
 const movies = ref([]);
 const page = ref(1);
 const loading = ref(false);
+const hasMore = ref(true);
 const selectedGenre = ref("");
+const infiniteSentinel = ref(null);
 
 const genreMap = {
   Action: 28,
@@ -25,19 +27,26 @@ const genreMap = {
   Western: 37,
 };
 
-const filterByGenre = (genreName) => {
+const filterByGenre = async (genreName) => {
   selectedGenre.value = genreName;
+  // reset list and restart pagination when changing genre
+  movies.value = [];
+  page.value = 1;
+  hasMore.value = true;
+  await fetchMovies();
 };
 
-const resetFilter = () => {
+const resetFilter = async () => {
+  if (!selectedGenre.value) return;
   selectedGenre.value = "";
+  movies.value = [];
+  page.value = 1;
+  hasMore.value = true;
+  await fetchMovies();
 };
 
-const filteredMovies = computed(() => {
-  if (!selectedGenre.value) return movies.value;
-  const genreId = genreMap[selectedGenre.value];
-  return movies.value.filter((movie) => movie.genre_ids.includes(genreId));
-});
+// The API now returns items already filtered when a genre is selected.
+const filteredMovies = computed(() => movies.value);
 
 const showGenreModal = ref(false);
 
@@ -50,14 +59,21 @@ const closeGenreModal = () => {
 };
 
 const fetchMovies = async () => {
-  if (loading.value) return;
+  if (loading.value || !hasMore.value) return;
   loading.value = true;
 
   try {
-    const response = await $fetch(`/api/movies/top-rated?page=${page.value}`);
+    const genreParam = selectedGenre.value
+      ? `&genre=${genreMap[selectedGenre.value]}`
+      : "";
+    const response = await $fetch(
+      `/api/movies/top-rated?page=${page.value}${genreParam}`
+    );
     if (response && response.results) {
       movies.value = [...movies.value, ...response.results];
+      const totalPages = response.total_pages || 1;
       page.value += 1;
+      hasMore.value = page.value <= totalPages;
     }
   } catch (error) {
     console.error("Erreur lors du chargement des films :", error);
@@ -66,29 +82,33 @@ const fetchMovies = async () => {
   }
 };
 
-const handleScroll = () => {
-  const scrollPosition = window.innerHeight + window.scrollY;
-  const threshold = document.documentElement.offsetHeight - 100;
-
-  if (scrollPosition >= threshold) {
+let observer;
+const onIntersect = (entries) => {
+  const entry = entries[0];
+  if (entry && entry.isIntersecting) {
     fetchMovies();
   }
 };
 
 onMounted(() => {
   fetchMovies();
-  window.addEventListener("scroll", handleScroll);
+  observer = new IntersectionObserver(onIntersect, {
+    root: null,
+    rootMargin: "200px",
+    threshold: 0,
+  });
+  if (infiniteSentinel.value) observer.observe(infiniteSentinel.value);
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener("scroll", handleScroll);
+  if (observer) observer.disconnect();
 });
 </script>
 
 <template>
   <section class="section">
-    <div class="upcoming-container">
-      <h1 class="title-upcoming">Top rated movies</h1>
+    <div class="section-container">
+      <h1 class="title-section">Top rated movies</h1>
       <div class="filter-container">
         <h2 class="title-filter">Filter by genre</h2>
         <div class="filter-btn-container">
@@ -142,6 +162,7 @@ onBeforeUnmount(() => {
           :stars="movie.vote_average"
         />
       </div>
+      <div ref="infiniteSentinel"></div>
       <div v-if="loading" class="loader">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
           <radialGradient
@@ -248,15 +269,9 @@ onBeforeUnmount(() => {
   width: auto;
   min-height: 0;
 }
+</style>
 
-.upcoming-container {
-  padding: 20px;
-}
-
-.title-upcoming {
-  margin-bottom: 10px;
-}
-
+<style>
 .filter-container {
   margin: 20px 0;
   display: flex;
@@ -392,9 +407,6 @@ onBeforeUnmount(() => {
 /*BREAKPOINTS*/
 
 @media (max-width: 640px) {
-  .title-upcoming {
-    font-size: 1.2rem;
-  }
   .filter-btn-container {
     gap: 7px;
     margin-bottom: 0;
