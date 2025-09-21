@@ -8,7 +8,7 @@
         />
       </div>
       <div class="poster-film-else" v-else>
-        <img src="/public/img-placeholder.png" alt="" />
+        <img src="/img-placeholder.png" alt="" />
       </div>
       <div class="info-film">
         <h3>

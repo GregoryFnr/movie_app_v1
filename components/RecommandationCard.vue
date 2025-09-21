@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <NuxtLink :to="`${movieid}`">
+    <NuxtLink :to="`/movies/${movieid}`">
       <div class="card-container">
         <div class="poster-film">
           <img

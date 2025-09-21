@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <NuxtLink :to="`movies/${movieid}`">
+    <NuxtLink :to="`/movies/${movieid}`">
       <div class="card-container">
         <div class="poster-film" v-if="poster">
           <img
@@ -9,7 +9,7 @@
           />
         </div>
         <div class="poster-film-else" v-else>
-          <img src="/public/img-placeholder.png" alt="Poster film" />
+          <img src="/img-placeholder.png" alt="Poster film" />
         </div>
         <div class="info-film">
           <h3>
