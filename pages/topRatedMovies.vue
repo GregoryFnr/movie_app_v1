@@ -3,50 +3,10 @@ const movies = ref([]);
 const page = ref(1);
 const loading = ref(false);
 const hasMore = ref(true);
-const selectedGenre = ref("");
+const selectedGenre = ref(0); // TMDB genre id (0 means none)
+const selectedGenreName = ref("");
 const infiniteSentinel = ref(null);
-
-const genreMap = {
-  Action: 28,
-  Adventure: 12,
-  Animation: 16,
-  Comedy: 35,
-  Crime: 80,
-  Documentary: 99,
-  Drama: 18,
-  Family: 10751,
-  History: 36,
-  Horror: 27,
-  Music: 10402,
-  Mystery: 9648,
-  Romance: 10749,
-  "Science Fiction": 878,
-  "TV Movie": 10770,
-  Thriller: 53,
-  War: 10752,
-  Western: 37,
-};
-
-const filterByGenre = async (genreName) => {
-  selectedGenre.value = genreName;
-  // reset list and restart pagination when changing genre
-  movies.value = [];
-  page.value = 1;
-  hasMore.value = true;
-  await fetchMovies();
-};
-
-const resetFilter = async () => {
-  if (!selectedGenre.value) return;
-  selectedGenre.value = "";
-  movies.value = [];
-  page.value = 1;
-  hasMore.value = true;
-  await fetchMovies();
-};
-
-// The API now returns items already filtered when a genre is selected.
-const filteredMovies = computed(() => movies.value);
+const genres = ref([]);
 
 const showGenreModal = ref(false);
 
@@ -58,14 +18,44 @@ const closeGenreModal = () => {
   showGenreModal.value = false;
 };
 
+// The API now returns items already filtered when a genre is selected.
+const filteredMovies = computed(() => movies.value);
+
+const fetchGenres = async () => {
+  try {
+    const res = await $fetch('/api/movies/genres');
+    genres.value = res?.genres || [];
+  } catch (e) {
+    console.error('Erreur lors du chargement des genres', e);
+  }
+};
+
+const filterByGenre = async (genreId, genreName = "") => {
+  if (selectedGenre.value === genreId) return;
+  selectedGenre.value = genreId;
+  selectedGenreName.value = genreName || (genres.value.find(g => g.id === genreId)?.name || "");
+  movies.value = [];
+  page.value = 1;
+  hasMore.value = true;
+  await fetchMovies();
+};
+
+const resetFilter = async () => {
+  if (!selectedGenre.value) return;
+  selectedGenre.value = 0;
+  selectedGenreName.value = "";
+  movies.value = [];
+  page.value = 1;
+  hasMore.value = true;
+  await fetchMovies();
+};
+
 const fetchMovies = async () => {
   if (loading.value || !hasMore.value) return;
   loading.value = true;
 
   try {
-    const genreParam = selectedGenre.value
-      ? `&genre=${genreMap[selectedGenre.value]}`
-      : "";
+    const genreParam = selectedGenre.value ? `&genre=${selectedGenre.value}` : "";
     const response = await $fetch(
       `/api/movies/top-rated?page=${page.value}${genreParam}`
     );
@@ -91,6 +81,7 @@ const onIntersect = (entries) => {
 };
 
 onMounted(() => {
+  fetchGenres();
   fetchMovies();
   observer = new IntersectionObserver(onIntersect, {
     root: null,
@@ -115,38 +106,37 @@ onBeforeUnmount(() => {
           <button
             type="button"
             class="filter-btn"
-            :class="{ active: selectedGenre === 'Action' }"
-            @click="filterByGenre('Action')"
+            :class="{ active: selectedGenre === 28 }"
+            @click="filterByGenre(28, 'Action')"
           >
             Action
           </button>
           <button
             type="button"
             class="filter-btn"
-            :class="{ active: selectedGenre === 'Adventure' }"
-            @click="filterByGenre('Adventure')"
+            :class="{ active: selectedGenre === 12 }"
+            @click="filterByGenre(12, 'Adventure')"
           >
             Adventure
           </button>
           <button
             type="button"
             class="filter-btn"
-            :class="{ active: selectedGenre === 'Horror' }"
-            @click="filterByGenre('Horror')"
+            :class="{ active: selectedGenre === 27 }"
+            @click="filterByGenre(27, 'Horror')"
           >
             Horror
           </button>
           <button type="button" class="filter-btn" @click="openGenreModal">
             Select genre
           </button>
-          <!-- Bouton dynamique si un genre est sélectionné -->
           <button
             type="button"
             v-if="selectedGenre"
             class="filter-btn selected-filter"
             @click="resetFilter"
           >
-            {{ selectedGenre }} <font-awesome-icon :icon="['fas', 'xmark']" />
+            {{ selectedGenreName }} <font-awesome-icon :icon="['fas', 'xmark']" />
           </button>
           <button class="filter-btn-reset" @click="resetFilter">Reset</button>
         </div>
@@ -229,15 +219,12 @@ onBeforeUnmount(() => {
           <div class="modal-genres">
             <button
               type="button"
-              v-for="(id, name) in genreMap"
-              :key="id"
+              v-for="g in genres"
+              :key="g.id"
               class="filter-btn"
-              @click="
-                filterByGenre(name);
-                closeGenreModal();
-              "
+              @click="filterByGenre(g.id, g.name); closeGenreModal()"
             >
-              {{ name }}
+              {{ g.name }}
             </button>
           </div>
           <font-awesome-icon
